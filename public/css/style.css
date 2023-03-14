@@ -104,10 +104,34 @@
     transition: .3s ease-in-out;
 }
 
-.section{
-    border: 2px solid black;
+
+/* sectiune 1 */
+.section-1{
+    height: 30rem;
+    border: 2px solid red;
 }
 
+#section-details{
+    padding-top: 5rem;
+    margin-left: 18rem;
+    margin-right: 12rem;
+    display:flex;
+}
+
+.story{
+    padding: 1.5rem;
+    border-radius: 1rem;
+    width: 50%;
+    background-color: #033B4A;
+    color: white;
+}
+.image{
+    width: 50%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 
 }

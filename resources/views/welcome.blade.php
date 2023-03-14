@@ -436,6 +436,21 @@
             </div>
         @endif
     </div>
+    <div class="section-1">
+        <div class="container-fluid">
+            <div class="row" id="section-details">
+                <div class="story">
+                    <p>Povestea noastra</p>
+                    <h3><span style="color:white">med</span><span
+                        style="color:#e41274;">Hospital</span></h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis officiis iste a, corrupti eaque dolorem distinctio, cupiditate hic exercitationem numquam sequi ea voluptatum excepturi aspernatur officia ex unde dolor consequuntur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit quas est odit rem pariatur ducimus. Rem nulla porro, sint consequatur facilis, architecto suscipit iste ratione debitis doloribus dolorum consectetur fugit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem deserunt voluptas consequuntur eos, provident delectus quas quis, sed sapiente laboriosam necessitatibus ex rem facilis dicta error aspernatur reiciendis officiis harum! lorem</p>
+                </div>
+                <div class="image">
+                    <img src="/images/hospital.jpg" alt="" width="500" height="300">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
