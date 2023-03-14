@@ -451,6 +451,31 @@
             </div>
         </div>
     </div>
+    <div class="section-2-medici">
+        aici medici
+    </div>
 </body>
-
+<footer>
+    <div class="last-section">
+        <div class="container-fluid">
+            <div class="row" id="footer">
+                <div class="story-footer-1">
+                    <h3><span style="color:white">med</span><span
+                        style="color:#e41274;">Hospital</span></h3>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis officiis iste a, corrupti eaque dolorem distinctio, cupiditate hic exercitationem numquam sequi ea voluptatum excepturi aspernatur officia ex unde dolor consequuntur! </p>
+                </div>
+                <div class="story-footer-2">
+                    <p>Linkuri site</p>
+                    <a href="">Medici</a><br>
+                    <a href="">Pacienti</a>
+                </div>
+                <div class="story-footer-3">
+                    <p>Servicii</p>
+                    <a href=""></a><br>
+                    <a href=""></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 </html>
