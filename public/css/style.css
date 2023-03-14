@@ -1,1 +1,113 @@
+/* 1 section-top (prima sectiune din pagina) */
+/* .section-top-left{
+    font-size: 13px;
+    margin-left: 15rem;
+}
 
+.section-top-left p{
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.section-top-right{
+    display: flex;
+    font-size: 13px;
+    margin-right: 15rem;
+}
+
+.section-top-right a{
+    padding: 0rem .5rem;
+    text-decoration: none;
+    font-size: 25px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#section-top-id{
+    display: flex;
+    justify-content: space-between;
+}    */
+
+
+/* 1.1 section-hero (titlu, auth) */
+#section-hero{
+    display: flex;
+    justify-content: space-between;
+    height: 5rem;
+    background-color: #033B4A;
+}
+.header-title{
+    margin-left: 15rem;
+}
+.header-auth{
+    margin-right: 15rem;
+    width: 14%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#title{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 22px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#home{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    background-color: #B61861;
+    color:white;
+    width: 50%;
+}
+
+#auth{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    background-color: #B61861;
+    color:white;
+    width: 50%;
+    transition: .3s ease-in-out;
+}
+
+#auth:hover{
+    background-color: white;
+    color: black;
+    transition: .3s ease-in-out;
+}
+
+#inregistrare {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gray;
+    background-color: #B61861;
+    color:white;
+    width: 50%; 
+    transition: .3s ease-in-out;
+}
+
+#inregistrare:hover{
+    background-color: white;
+    color: black;
+    transition: .3s ease-in-out;
+}
+
+.section{
+    border: 2px solid black;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+}

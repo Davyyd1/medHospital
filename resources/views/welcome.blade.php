@@ -9,9 +9,16 @@
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+    {{-- scripts --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
         /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
         html {
@@ -392,18 +399,40 @@
 </head>
 
 <body>
-    <div class="container">
+    {{-- <div class="container-fluid">
+        <div class="row" id="section-top-id">
+            <div class="section-top-left">
+                <p id="adresa">Adresa</p>
+            </div>
+            <div class="section-top-right">
+                    <a href=""><i class="fa-brands fa-twitter"></i></a>
+                    <a href=""><i class="fa-brands fa-facebook"></i></a>
+                    <a href=""><i class="fa-brands fa-instagram"></i></a>
+                    <a href=""><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href=""><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </div> --}}
+    <div class="container-fluid">
         @if (Route::has('login'))
-            <div class="row">
-                @auth
-                    <a href="{{ url('/home') }}" class="">Home</a>
-                @else
-                    <a href="{{ route('login') }}" class="">Autentificare</a>
+            <div class="row" id="section-hero">
+                {{-- <div class="section-hero"> --}}
+                    <div class="header-title">
+                        <a href="/" id="title"><span style="color:white">med</span> <span
+                                style="color:#e41274;">Hospital</span></a>
+                    </div>
+                    <div class="header-auth">
+                        @auth
+                            <a href="{{ url('/home') }}" id="home">Home</a>
+                        @else
+                            <a href="{{ route('login') }}" id="auth">Inregistreaza-te</a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="">Inregistrare</a>
-                    @endif
-                @endauth
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" id="inregistrare">Creeaza cont</a>
+                            @endif
+                        @endauth
+                    </div>
+                {{-- </div> --}}
             </div>
         @endif
     </div>
