@@ -452,7 +452,26 @@
         </div>
     </div>
     <div class="section-2-medici">
-        aici medici
+        <div class="container-fluid">
+            <div class="row" id="medici">
+                <div class="medic">
+                    <img src="" alt="">
+                    <h2>Medic Avram Iancu</h2>
+                    <p>Descriere</p>
+                </div>
+                <div class="medic">
+                    <img src="" alt="">
+                    <h2>Medic Mihai Eminescu</h2>
+                    <p>Descriere</p>
+                </div>
+                <div class="medic">
+                    <img src="" alt="">
+                    <h2>Medic Hassan Al-Nassr</h2>
+                    <p>Descriere</p>
+                </div>
+                
+            </div>
+        </div>
     </div>
 </body>
 <footer>

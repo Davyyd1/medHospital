@@ -133,7 +133,20 @@
     align-items: center;
 }
 
+/* sectiune 2 medici */
+.section-2-medici{
+    background-color: #B61861;
+}
 
+#medici {
+    margin-left: 15rem;
+    margin-right: 15rem;
+    border: 2px solid green;
+}
+.medic{
+    margin-right: 2rem;
+    border-right: 1px solid gray;
+}
 /* footer */
 .last-section{
     padding: 1rem 0rem;
