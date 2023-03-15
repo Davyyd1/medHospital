@@ -421,6 +421,7 @@
                         <a href="/" id="title"><span style="color:white">med</span> <span
                                 style="color:#e41274;">Hospital</span></a>
                     </div>
+                    
                     <div class="header-auth">
                         @auth
                             <a href="{{ url('/home') }}" id="home">Home</a>
@@ -436,7 +437,77 @@
             </div>
         @endif
     </div>
-    <div class="section-1">
+    <div class="section-second">
+        <div class="container-fluid">
+            <div class="row" id="nav-links">
+                <ul class="nav-list">
+                    <a href=""><li>Medici</li></a>
+                    <a href=""><li>Pacienti</li></a>
+                    <a href=""><li>Contact</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-1-medici">
+        <div class="container-fluid">
+            <div class="row" id="medici">
+                <div class="medic">
+                    <div class="imagine-medic">
+                        <img src="" alt="imagine">
+                    </div>
+                    <div class="nume-medic">
+                        <h5>Medic Avram Iancu</h5>
+                    </div>
+                    <div class="descriere-medic">
+                        <p>Descriere</p>
+                    </div>
+                    <div class="actiuni">
+                        Fa o programare!
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="medici">
+                <div class="medic">
+                    <div class="imagine-medic">
+                        <img src="" alt="imagine">
+                    </div>
+                    <div class="nume-medic">
+                        <h5>Medic Avram Iancu</h5>
+                    </div>
+                    <div class="descriere-medic">
+                        <p>Descriere</p>
+                    </div>
+                    <div class="actiuni">
+                        Fa o programare!
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="medici">
+                <div class="medic">
+                    <div class="imagine-medic">
+                        <img src="" alt="imagine">
+                    </div>
+                    <div class="nume-medic">
+                        <h5>Medic Avram Iancu</h5>
+                    </div>
+                    <div class="descriere-medic">
+                        <p>Descriere</p>
+                    </div>
+                    <div class="actiuni">
+                        Fa o programare!
+                    </div>
+                </div>
+            </div>
+            <div class="row" id="medici">
+                <div class="medic">
+                    <a href="">Vezi toti medicii</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sectiune-2">
         <div class="container-fluid">
             <div class="row" id="section-details">
                 <div class="story">
@@ -451,28 +522,7 @@
             </div>
         </div>
     </div>
-    <div class="section-2-medici">
-        <div class="container-fluid">
-            <div class="row" id="medici">
-                <div class="medic">
-                    <img src="" alt="">
-                    <h2>Medic Avram Iancu</h2>
-                    <p>Descriere</p>
-                </div>
-                <div class="medic">
-                    <img src="" alt="">
-                    <h2>Medic Mihai Eminescu</h2>
-                    <p>Descriere</p>
-                </div>
-                <div class="medic">
-                    <img src="" alt="">
-                    <h2>Medic Hassan Al-Nassr</h2>
-                    <p>Descriere</p>
-                </div>
-                
-            </div>
-        </div>
-    </div>
+    
 </body>
 <footer>
     <div class="last-section">

@@ -31,12 +31,12 @@
 }    */
 
 
-/* 1.1 section-hero (titlu, auth) */
+/* 1.1 section-hero (titlu, nav-link, auth) */
 #section-hero{
     display: flex;
     justify-content: space-between;
     height: 5rem;
-    background-color: #033B4A;
+    background-color: black;
 }
 .header-title{
     margin-left: 15rem;
@@ -63,8 +63,8 @@
     justify-content: center;
     align-items: center;
     border: 1px solid gray;
-    background-color: #B61861;
-    color:white;
+    background-color: white;
+    color:black;
     width: 50%;
 }
 
@@ -74,8 +74,8 @@
     justify-content: center;
     align-items: center;
     border: 1px solid gray;
-    background-color: #B61861;
-    color:white;
+    background-color: white;
+    color:black;
     width: 50%;
     transition: .3s ease-in-out;
 }
@@ -92,8 +92,8 @@
     justify-content: center;
     align-items: center;
     border: 1px solid gray;
-    background-color: #B61861;
-    color:white;
+    background-color: white;
+    color:black;
     width: 50%; 
     transition: .3s ease-in-out;
 }
@@ -104,11 +104,94 @@
     transition: .3s ease-in-out;
 }
 
+#nav-links{
+    background-color: black;
+    border-top:1px solid white;
+    padding-top: 1rem;
+}
 
-/* sectiune 1 */
-.section-1{
+#nav-links .nav-list{
+    list-style: none;
+    width: 100%;
+    margin-left: 15rem;
+    margin-right: 15rem;
+    display: flex;
+    padding-left:0;
+}
+
+#nav-links .nav-list a{
+    text-decoration:none;
+}
+
+#nav-links .nav-list li{
+    border-right: 1.5px solid gray;
+    padding: 1rem;
+    background-color: white;
+    color:black;
+    transition: .3s ease-in-out;
+}
+
+#nav-links .nav-list li:hover{
+    background-color: white;
+    color: black;
+    transition: .3s ease-in-out;
+}
+
+
+
+/* sectiune 1 medici */
+.section-1-medici{
+    background-color: black;
+    height: 35rem;
+}
+
+#medici {
+    margin-left: 14rem;
+    margin-right: 14rem;
+    /* border: 2px solid green; */
+    height: 10rem;
+    border-bottom: 1px solid white;
+}
+
+.imagine-medic{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1.5px solid white;
+    border-left: 1.5px solid white;
+    width: 20%;
+}
+
+.nume-medic{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1.5px solid white;
+    width: 25%;
+}
+
+.descriere-medic{
+    border-right:1.5px solid white;
+    width: 30%;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.medic{
+    display: flex;
+    height: 100%;
+    /* border: 3px solid white; */
+    padding-right: 2rem;
+    margin-right: 2rem;
+    color:white;
+    width: 100%;
+    margin-right: 0;
+}
+
+/* sectiune 2 */
+.sectiune-2{
     height: 30rem;
-    border: 2px solid red;
 }
 
 #section-details{
@@ -122,7 +205,7 @@
     padding: 1.5rem;
     border-radius: 1rem;
     width: 50%;
-    background-color: #033B4A;
+    background-color: black;
     color: white;
 }
 .image{
@@ -133,24 +216,11 @@
     align-items: center;
 }
 
-/* sectiune 2 medici */
-.section-2-medici{
-    background-color: #B61861;
-}
 
-#medici {
-    margin-left: 15rem;
-    margin-right: 15rem;
-    border: 2px solid green;
-}
-.medic{
-    margin-right: 2rem;
-    border-right: 1px solid gray;
-}
 /* footer */
 .last-section{
     padding: 1rem 0rem;
-    background-color: #033B4A;
+    background-color: black;
     color: white;
     display: flex;
     align-items: center;
