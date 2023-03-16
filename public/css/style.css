@@ -30,16 +30,34 @@
     justify-content: space-between;
 }    */
 
+/* ------------------------------------------- */
+/* 1.1 - sectiunea de sus, titlu navigatie si autentificarea */
+/* 1.2 - cautarea medicului */
+/* 1.3 - sectiune 1 medici */
+/* 1.4 - sectiune 2 */
+/* 1.5 - footer */
+
 
 /* 1.1 section-hero (titlu, nav-link, auth) */
+.nav-item {
+    list-style: none;
+    margin-left: 10rem;
+}
+
+.nav-link{
+    padding: 1.75rem 1rem;
+    background-color: white;
+}
+
 #section-hero{
     display: flex;
     justify-content: space-between;
     height: 5rem;
-    background-color: black;
+    background-color: pink;
 }
 .header-title{
     margin-left: 15rem;
+    width: max-content;
 }
 .header-auth{
     margin-right: 15rem;
@@ -137,9 +155,31 @@
     transition: .3s ease-in-out;
 }
 
+/* 1.2 cautare-medic */
+.search{
+    /* border: 2px solid green; */
+    padding: 2rem;
+}
 
+#search-div{
+    margin-left: 14rem;
+    margin-right: 14rem;
+    /* border: 2px solid red; */
+    display: flex;
+    width: 100%;
+}
+#search-div input {
+width: 100%;
+}
+#nume{
+    border: 2px solid black;
+}
 
-/* sectiune 1 medici */
+#container-search{
+    display: flex;
+}
+
+/* 1.3 sectiune 1 medici */
 .section-1-medici{
     background-color: black;
     height: 35rem;
@@ -148,7 +188,6 @@
 #medici {
     margin-left: 14rem;
     margin-right: 14rem;
-    /* border: 2px solid green; */
     height: 10rem;
     border-bottom: 1px solid white;
 }
@@ -173,15 +212,11 @@
 .descriere-medic{
     border-right:1.5px solid white;
     width: 30%;
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
 }
 
 .medic{
     display: flex;
     height: 100%;
-    /* border: 3px solid white; */
     padding-right: 2rem;
     margin-right: 2rem;
     color:white;
@@ -189,7 +224,7 @@
     margin-right: 0;
 }
 
-/* sectiune 2 */
+/* 1.4 sectiune 2 */
 .sectiune-2{
     height: 30rem;
 }
@@ -217,7 +252,7 @@
 }
 
 
-/* footer */
+/* 1.5 footer */
 .last-section{
     padding: 1rem 0rem;
     background-color: black;

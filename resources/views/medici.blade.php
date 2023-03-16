@@ -16,10 +16,14 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
+
     <!-- Styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+
     <style>
         /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
         html {
@@ -454,7 +458,7 @@
             </div>
         @endif
     </div>
-    @if(Auth::check() && Auth::user()->role_id==1 || Auth::user()->role_id==2)
+    {{-- @if(Auth::check() && Auth::user()->role_id==1)
     <div class="section-second">
         <div class="container-fluid">
             <div class="row" id="nav-links">
@@ -466,7 +470,49 @@
             </div>
         </div>
     </div>
-    @endif
+    @endif --}}
+    <section class="search">
+        <div class="container-fluid" id="container-search">
+            <form id="call-back-form" class="call-back-form" name="call-back-form">
+            <div class="row" id="search-div">
+                <h3>Cautare medic</h3>
+                <div class="col-lg-3">
+                    <div class="form-box mb-20">
+                        <h5>Nume medic</h5>
+                        <input type="text" name="nume" class="form-control" value="" placeholder="Nume*">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-box mb-20">
+                        <h5>Prenume medic</h5>
+                        <input type="text" name="prenume" class="form-control" value="" placeholder="Prenume*">
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="form-box mb-20">
+                        <h5>Specialitate</h5>
+                        <input type="text" name="specialitate" class="form-control" value="" placeholder="Specialitate*">
+                    </div>
+                </div>
+                    <div class="form-box mb-10">
+                        <button style="vertical-align: bottom; height:100%; ">Search</button>
+                    </div>
+            </div>
+            </form>
+        </div>
+    </section>
+
+
+    <div class="section-second">
+        <div class="container-fluid">
+            <div class="row" id="nav-links">
+                <ul class="nav-list">
+                    <a href="/"><li><i class="fa-solid fa-left-long"></i>&nbsp;&nbsp;Inapoi</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
     <div class="section-1-medici">
         <div class="container-fluid">
             <div class="row" id="medici">
@@ -524,24 +570,8 @@
             </div>
         </div>
     </div>
-
-    <div class="sectiune-2">
-        <div class="container-fluid">
-            <div class="row" id="section-details">
-                <div class="story">
-                    <p>Povestea noastra</p>
-                    <h3><span style="color:white">med</span><span
-                        style="color:#e41274;">Hospital</span></h3>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis officiis iste a, corrupti eaque dolorem distinctio, cupiditate hic exercitationem numquam sequi ea voluptatum excepturi aspernatur officia ex unde dolor consequuntur! Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit quas est odit rem pariatur ducimus. Rem nulla porro, sint consequatur facilis, architecto suscipit iste ratione debitis doloribus dolorum consectetur fugit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem deserunt voluptas consequuntur eos, provident delectus quas quis, sed sapiente laboriosam necessitatibus ex rem facilis dicta error aspernatur reiciendis officiis harum! lorem</p>
-                </div>
-                <div class="image">
-                    <img src="/images/hospital.jpg" alt="" width="500" height="300">
-                </div>
-            </div>
-        </div>
-    </div>
-    
 </body>
+
 <footer>
     <div class="last-section">
         <div class="container-fluid">

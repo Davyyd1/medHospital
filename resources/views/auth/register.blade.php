@@ -58,7 +58,7 @@
                             <label for="sex" class="col-md-4 col-form-label text-md-end">{{ __('Sex') }}</label>
 
                             <div class="col-md-6">
-                                <select id="sex" class="form-control @error('sex') is-invalid @enderror" name="sex"  required autofocus>
+                                <select id="sex" class="form-control @error('sex') is-invalid @enderror" name="sex" required autofocus>
                                     <option value="">Alege genul</option>
                                     <option value="masculin">Masculin</option>
                                     <option value="feminin">Feminin</option>
