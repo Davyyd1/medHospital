@@ -11,17 +11,22 @@
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 
     {{-- scripts --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
 
+
     <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/adauga-medic.css') }}">
 
 
     <style>
@@ -422,21 +427,22 @@
         @if (Route::has('login'))
             <div class="row" id="section-hero">
                 {{-- <div class="section-hero"> --}}
-                    <div class="header-title">
-                        <a href="/" id="title"><span style="color:white">med</span> <span
-                                style="color:#e41274;">Hospital</span></a>
-                    </div>
-                    
-                    <div class="header-auth">
-                        @auth
+                <div class="header-title">
+                    <a href="/" id="title"><span style="color:white">med</span> <span
+                            style="color:#e41274;">Hospital</span></a>
+                </div>
+
+                <div class="header-auth">
+                    @auth
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
@@ -446,153 +452,87 @@
                                 </form>
                             </div>
                         </li>
-                        @else
-                            <a href="{{ route('login') }}" id="auth">Inregistreaza-te</a>
+                    @else
+                        <a href="{{ route('login') }}" id="auth">Inregistreaza-te</a>
 
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" id="inregistrare">Creeaza cont</a>
-                            @endif
-                        @endauth
-                    </div>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" id="inregistrare">Creeaza cont</a>
+                        @endif
+                    @endauth
+                </div>
                 {{-- </div> --}}
             </div>
         @endif
     </div>
-    {{-- @if(Auth::check() && Auth::user()->role_id==1)
-    <div class="section-second">
-        <div class="container-fluid">
-            <div class="row" id="nav-links">
-                <ul class="nav-list">
-                    <a href="medici"><li>Medici</li></a>
-                    <a href=""><li>Pacienti</li></a>
-                    <a href=""><li>Contact</li></a>
-                </ul>
-            </div>
-        </div>
-    </div>
-    @endif --}}
-    <section class="search">
-        <div class="container-fluid" id="container-search">
+
+    <section class="formular-adaugare">
+        <div class="container-fluid" id="adaugare-medic">
             <form id="call-back-form" class="call-back-form" name="call-back-form">
-            <div class="row" id="search-div">
-                <h3>Cautare medic</h3>
-                <div class="col-lg-3">
-                    <div class="form-box mb-20">
-                        <h5>Nume medic</h5>
+                @csrf
+                <div class="row" id="adaugare-medic-row">
+                    <h3>Formular adaugare medic</h3>
+                    <div class="col-md-6">
+                        <label>Nume medic</label>
                         <input type="text" name="nume" class="form-control" value="" placeholder="Nume*">
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="form-box mb-20">
-                        <h5>Prenume medic</h5>
+                    <div class="col-md-6">
+                        <label>Prenume medic</label>
                         <input type="text" name="prenume" class="form-control" value="" placeholder="Prenume*">
                     </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="form-box mb-20">
-                        <h5>Specialitate</h5>
-                        <input type="text" name="specialitate" class="form-control" value="" placeholder="Specialitate*">
+                    <div class="col-md-6">
+                        <label>Specialitate</label>
+                        <input type="text" name="specialitate" class="form-control" value=""
+                            placeholder="Specialitate*">
                     </div>
-                </div>
-                    <div class="form-box mb-10">
-                        <button style="vertical-align: bottom; height:100%; ">Search</button>
+                    <div class="col-md-6">
+                        <label>Studii</label>
+                        <input type="text" name="studii" class="form-control" value="" placeholder="Studii*">
                     </div>
-            </div>
+                    <div class="col-md-6">
+                        <label>Program</label>
+                        <input type="text" name="program" class="form-control" value="" placeholder="Program*">
+                    </div>
+                    <div class="col-md-6">
+                        <label>Poza medic</label>
+                        <input type='file' class="form-control" name="image[]" />
+                    </div>
+                    <div class="btn">
+                        <button type="button" class="btn btn-primary" onclick="submit_form()">Submit</button>
+                    </div>
+                    <div id="errors"></div>
+                </div>
             </form>
         </div>
     </section>
 
-
-    <div class="section-second">
-        <div class="container-fluid">
-            <div class="row" id="nav-links">
-                <ul class="nav-list">
-                    <a href="/"><li><i class="fa-solid fa-left-long"></i>&nbsp;&nbsp;Inapoi</li></a>
-                </ul>
-            </div>
-        </div>
-    </div>
-    
-    <div class="section-1-medici">
-        <div class="container-fluid">
-            <div class="row" id="medici">
-                <div class="medic">
-                    <div class="imagine-medic">
-                        <img src="" alt="imagine">
-                    </div>
-                    <div class="nume-medic">
-                        <h5>Medic Avram Iancu</h5>
-                    </div>
-                    <div class="descriere-medic">
-                        <p>Descriere</p>
-                    </div>
-                    <div class="actiuni">
-                        Fa o programare!
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="medici">
-                <div class="medic">
-                    <div class="imagine-medic">
-                        <img src="" alt="imagine">
-                    </div>
-                    <div class="nume-medic">
-                        <h5>Medic Avram Iancu</h5>
-                    </div>
-                    <div class="descriere-medic">
-                        <p>Descriere</p>
-                    </div>
-                    <div class="actiuni">
-                        Fa o programare!
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="medici">
-                <div class="medic">
-                    <div class="imagine-medic">
-                        <img src="" alt="imagine">
-                    </div>
-                    <div class="nume-medic">
-                        <h5>Medic Avram Iancu</h5>
-                    </div>
-                    <div class="descriere-medic">
-                        <p>Descriere</p>
-                    </div>
-                    <div class="actiuni">
-                        Fa o programare!
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="medici">
-                <div class="medic">
-                    <a href="">Vezi toti medicii</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </body>
 
-<footer>
-    <div class="last-section">
-        <div class="container-fluid">
-            <div class="row" id="footer">
-                <div class="story-footer-1">
-                    <h3><span style="color:white">med</span><span
-                        style="color:#e41274;">Hospital</span></h3>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis officiis iste a, corrupti eaque dolorem distinctio, cupiditate hic exercitationem numquam sequi ea voluptatum excepturi aspernatur officia ex unde dolor consequuntur! </p>
-                </div>
-                <div class="story-footer-2">
-                    <p>Linkuri site</p>
-                    <a href="">Medici</a><br>
-                    <a href="">Pacienti</a>
-                </div>
-                <div class="story-footer-3">
-                    <p>Servicii</p>
-                    <a href=""></a><br>
-                    <a href=""></a>
-                </div>
-            </div>
-        </div>
-    </div>
-</footer>
+<script>
+    function submit_form()
+    {
+        var data = $("#call-back-form").serialize();
+        $.ajax({
+            url: "/adauga-medic",
+            method: "POST",
+            data: data,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(data) {
+                    if (data.status == 0) {
+                        $("#errors").html(data.mesaj);
+                        $("#errors").fadeTo(2000, 500).slideUp(500);
+                        $("#errors").slideUp(500);
+                    }
+                    if (data.status == 1) {
+                        $('#call-back-form')[0].reset();
+                        $("#errors").html(data.mesaj);
+                        $("#errors").fadeTo(2000, 500).slideUp(500);
+                        $("#errors").slideUp(500);
+                    }
+                }
+        })
+    }
+</script>
 </html>
+

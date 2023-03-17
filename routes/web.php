@@ -20,18 +20,14 @@ Route::get('/', function () {
 });
 // Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-
 Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/medici', [App\Http\Controllers\MediciController::class, 'show']);
 
-// Route::middleware('admin')->group(function () {
-
 Route::get('adauga-medic', [App\Http\Controllers\AdminMediciController::class, 'show_admin'])->middleware(admin::class);
-// })
-// };
+
+Route::post('adauga-medic', [App\Http\Controllers\AdminMediciController::class, 'adauga_medic'])->middleware(admin::class);
+
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();

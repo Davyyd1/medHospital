@@ -471,7 +471,7 @@
         <div class="container-fluid">
             <div class="row" id="nav-links">
                 <ul class="nav-list">
-                    <a href="adauga-medic"><li>Adauga medic</li></a>
+                    <a href="{{ url('adauga-medic') }}"><li>Adauga medic</li></a>
                     <a href="medici"><li>Medici</li></a>
                     <a href=""><li>Pacienti</li></a>
                     <a href=""><li>Contact</li></a>
