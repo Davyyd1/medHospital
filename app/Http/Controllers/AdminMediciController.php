@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Medici;
+use App\MediciImg;
 use Illuminate\Http\Request;
 use Validator;
 
@@ -32,7 +33,16 @@ class AdminMediciController extends Controller
             $medic->specialitate_medic=$request->specialitate;
             $medic->studii=$request->studii;
             $medic->program=$request->program;
+            if($request->hasFile('image')){
+                $destination_folder = 'public/images';
+                $image = $request->file('image');
+                $image_name = time().rand().'.jpg';
+                $path = $request->file('image')->storeAs($destination_folder, $image_name);
+                $medic->image = $image_name;
+            }
+            
             $medic->save();
+
             return response([
                 'status'=>1,
                 'mesaj'=>'<div class="alert alert-success" role="alert">
@@ -50,4 +60,5 @@ class AdminMediciController extends Controller
             'program'=>'required'
         ];
     }
+
 }

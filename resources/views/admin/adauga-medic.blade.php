@@ -467,7 +467,7 @@
 
     <section class="formular-adaugare">
         <div class="container-fluid" id="adaugare-medic">
-            <form id="call-back-form" class="call-back-form" name="call-back-form">
+            <form id="call-back-form" class="call-back-form" name="call-back-form" enctype="multipart/form-data" method="POST">
                 @csrf
                 <div class="row" id="adaugare-medic-row">
                     <h3>Formular adaugare medic</h3>
@@ -494,10 +494,11 @@
                     </div>
                     <div class="col-md-6">
                         <label>Poza medic</label>
-                        <input type='file' class="form-control" name="image[]" />
+                        <input type='file' class="form-control" name="image" />
                     </div>
                     <div class="btn">
-                        <button type="button" class="btn btn-primary" onclick="submit_form()">Submit</button>
+                        <button type="button" class="btn btn-primary" id="adauga-medic">Submit</button>
+                        {{-- onclick="submit_form() --}}
                     </div>
                     <div id="errors"></div>
                 </div>
@@ -508,17 +509,43 @@
 </body>
 
 <script>
-    function submit_form()
-    {
-        var data = $("#call-back-form").serialize();
-        $.ajax({
-            url: "/adauga-medic",
-            method: "POST",
-            data: data,
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function(data) {
+    // function submit_form()
+    // {
+    //     var data = $("#call-back-form").serialize();
+    //     $.ajax({
+    //         url: "/adauga-medic",
+    //         method: "POST",
+    //         data: data,
+    //         headers: {
+    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //         },
+    //         success: function(data) {
+    //                 if (data.status == 0) {
+    //                     $("#errors").html(data.mesaj);
+    //                     $("#errors").fadeTo(2000, 500).slideUp(500);
+    //                     $("#errors").slideUp(500);
+    //                 }
+    //                 if (data.status == 1) {
+    //                     $('#call-back-form')[0].reset();
+    //                     $("#errors").html(data.mesaj);
+    //                     $("#errors").fadeTo(2000, 500).slideUp(500);
+    //                     $("#errors").slideUp(500);
+    //                 }
+    //             }
+    //     })
+    // }
+    $("#adauga-medic").click(function() {
+                var data = new FormData($('#call-back-form')[0]);
+                $.ajax({
+                    url: "/adauga-medic",
+                    method: "POST",
+                    data: data,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(data) {
                     if (data.status == 0) {
                         $("#errors").html(data.mesaj);
                         $("#errors").fadeTo(2000, 500).slideUp(500);
@@ -531,8 +558,9 @@
                         $("#errors").slideUp(500);
                     }
                 }
-        })
-    }
+                })
+
+            });
 </script>
 </html>
 

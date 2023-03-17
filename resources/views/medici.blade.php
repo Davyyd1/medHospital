@@ -515,13 +515,14 @@
     
     <div class="section-1-medici">
         <div class="container-fluid">
+            @foreach($medici as $medic)
             <div class="row" id="medici">
                 <div class="medic">
                     <div class="imagine-medic">
-                        <img src="" alt="imagine">
+                        <img src="/storage/images/{{ $medic->image }}" alt="imagine" width="250" height="150">
                     </div>
                     <div class="nume-medic">
-                        <h5>Medic Avram Iancu</h5>
+                        <h5>{{ $medic->nume_medic }}</h5>
                     </div>
                     <div class="descriere-medic">
                         <p>Descriere</p>
@@ -531,43 +532,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" id="medici">
-                <div class="medic">
-                    <div class="imagine-medic">
-                        <img src="" alt="imagine">
-                    </div>
-                    <div class="nume-medic">
-                        <h5>Medic Avram Iancu</h5>
-                    </div>
-                    <div class="descriere-medic">
-                        <p>Descriere</p>
-                    </div>
-                    <div class="actiuni">
-                        Fa o programare!
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="medici">
-                <div class="medic">
-                    <div class="imagine-medic">
-                        <img src="" alt="imagine">
-                    </div>
-                    <div class="nume-medic">
-                        <h5>Medic Avram Iancu</h5>
-                    </div>
-                    <div class="descriere-medic">
-                        <p>Descriere</p>
-                    </div>
-                    <div class="actiuni">
-                        Fa o programare!
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="medici">
-                <div class="medic">
-                    <a href="">Vezi toti medicii</a>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </body>
