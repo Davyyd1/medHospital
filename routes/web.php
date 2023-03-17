@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,12 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/medici', [App\Http\Controllers\MediciController::class, 'show']);
+
+// Route::middleware('admin')->group(function () {
+
+Route::get('adauga-medic', [App\Http\Controllers\AdminMediciController::class, 'show_admin'])->middleware(admin::class);
+// })
+// };
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
