@@ -480,6 +480,14 @@
                         <input type="text" name="prenume" class="form-control" value="" placeholder="Prenume*">
                     </div>
                     <div class="col-md-6">
+                        <label>Email medic</label>
+                        <input type="text" name="email" class="form-control" value="" placeholder="Email*">
+                    </div>
+                    <div class="col-md-6">
+                        <label>Parola cont medic</label>
+                        <input type="password" name="parola" class="form-control" value="" placeholder="Parola*">
+                    </div>
+                    <div class="col-md-6">
                         <label>Specialitate</label>
                         <input type="text" name="specialitate" class="form-control" value=""
                             placeholder="Specialitate*">

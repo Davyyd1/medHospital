@@ -2,19 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use App\Medici;
-use App\MediciImg;
+use App\UserInfo;
+use App\UsersMedicInfo;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Validator;
 
 class AdminMediciController extends Controller
 {
     public function show_admin(){
-        return view('admin.adauga-medic');
+        $user = User::where('role_id','2')->get();
+        return view('admin.adauga-medic',compact('user'));
     }
 
     public function adauga_medic(Request $request){
-        $check_name=Medici::where('nume_medic',$request->nume)->first();
+        $check_name=UsersMedicInfo::where('nume_medic',$request->nume)->first();
         if(!$check_name)
         {   
             $validator=Validator::make($request->input(),$this->validate_input());
@@ -27,22 +30,28 @@ class AdminMediciController extends Controller
                 ]);
              }
 
-            $medic=new Medici();
-            $medic->nume_medic=$request->nume;
-            $medic->prenume_medic=$request->prenume;
-            $medic->specialitate_medic=$request->specialitate;
-            $medic->studii=$request->studii;
-            $medic->program=$request->program;
+            $user=new User();
+            $user->role_id = '3';
+            $user->name = $request->nume.' '.$request->prenume;
+            $user->email=$request->email;
+            $user->password= Hash::make($request->parola);
+            
             if($request->hasFile('image')){
                 $destination_folder = 'public/images';
                 $image = $request->file('image');
                 $image_name = time().rand().'.jpg';
                 $path = $request->file('image')->storeAs($destination_folder, $image_name);
-                $medic->image = $image_name;
+                $user->avatar = $image_name;
             }
-            
+            $user->save();
+            $medic = new UsersMedicInfo();
+            $medic->user_id = $user->id;
+            $medic->nume_medic = $request->nume;
+            $medic->prenume_medic = $request->prenume;
+            $medic->specialitate_medic = $request->specialitate;
+            $medic->studii = $request->studii;
+            $medic->program = $request->program;
             $medic->save();
-
             return response([
                 'status'=>1,
                 'mesaj'=>'<div class="alert alert-success" role="alert">
