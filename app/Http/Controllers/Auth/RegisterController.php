@@ -53,20 +53,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         'name' => ['required', 'string', 'max:255'],
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
-    //         'prenume' => ['required'],
-    //         'varsta' => ['required'],
-    //         'sex' => ['required'],
-    //         'cnp' => 'required|digits:13',
-    //         'telefon' => 'required|digits:10',
-    //         'cod_pacient' => ['required']
-    //     ]);
-    // }
+    
     private function checkinput()
     {
         return request()->validate([
@@ -112,29 +99,5 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    // protected function create(array $data)
-    // {
-    //     return User::create([
-    //         'name' => $data['name'],
-    //         'email' => $data['email'],
-    //         'password' => Hash::make($data['password']),]);
-    //         // 'prenume' => $data['prenume'],
-    //         // 'varsta' => $data['varsta'],
-    //         // 'sex' => $data['sex'],
-    //         // 'cnp' => $data['cnp'],
-    //         // 'telefon' => $data['telefon'],
-    //         // 'cod_pacient' => $data['cod_pacient']
-    //         $user_info = new UserInfo();
-    //         $user_info->nume = $data['name'];
-    //         $user_info->prenume = $data['prenume'];
-    //         $user_info->varsta = $data['varsta'];
-    //         $user_info->sex = $data['sex'];
-    //         $user_info->cnp = $data['cnp'];
-    //         $user_info->telefon = $data['telefon'];
-    //         $user_info->cod_pacient = $data['cod_pacient'];
-    //         $user_info->save();
-        
-        
-
-    // }
+    
 }

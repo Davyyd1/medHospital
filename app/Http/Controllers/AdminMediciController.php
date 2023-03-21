@@ -70,4 +70,15 @@ class AdminMediciController extends Controller
         ];
     }
 
+    public function show_profil_admin(Request $request, $nume){
+        return view('profil.profil-admin');
+    }
+
+    public function show_profil_doctor(Request $request, $nume){
+        return view('profil.profil-doctor');
+    }
+
+    public function show_profil_pacient(Request $request, $nume){
+        return view('profil.profil-pacient');
+    }
 }
