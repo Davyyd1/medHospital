@@ -25,13 +25,26 @@ Auth::routes();
 Route::get('/medici', [App\Http\Controllers\MediciController::class, 'show']);
 Route::post('/cauta-medici', [App\Http\Controllers\MediciController::class, 'cauta_medic'])->name('cauta-medici');
 
-Route::get('/profil-admin/{nume}', [App\Http\Controllers\AdminMediciController::class, 'show_profil_admin'])->name('/profil-admin/{nume}');
-Route::get('/profil-doctor/{nume}', [App\Http\Controllers\AdminMediciController::class, 'show_profil_doctor'])->name('/profil-doctor/{nume}');
-Route::get('/profil-pacient/{nume}', [App\Http\Controllers\AdminMediciController::class, 'show_profil_pacient'])->name('/profil-pacient/{nume}');
-
-
+// ---------------------------------------- Adauga-medic ---------------------------------------------------- {}
 Route::get('adauga-medic', [App\Http\Controllers\AdminMediciController::class, 'show_admin'])->middleware(admin::class);
 Route::post('adauga-medic', [App\Http\Controllers\AdminMediciController::class, 'adauga_medic'])->middleware(admin::class);
+
+Route::middleware(['auth','admin'])->group(function(){
+    
+});
+// ---------------------------------------- Profil si Actualizare date medic ---------------------------------------------------- {}
+Route::get('/profil-doctor', [App\Http\Controllers\AdminMediciController::class, 'show_profil_doctor'])->name('profil-doctor');
+Route::put('/profil-doctor', [App\Http\Controllers\MediciController::class, 'actualizeaza_date_medic'])->name('profil-doctor');
+
+// ---------------------------------------- Profil si Actualizare date pacient ---------------------------------------------------- {}
+Route::get('/profil-pacient', [App\Http\Controllers\AdminMediciController::class, 'show_profil_pacient'])->name('profil-pacient');
+Route::put('/profil-pacient', [App\Http\Controllers\MediciController::class, 'actualizeaza_date_pacient'])->name('profil-pacient');
+
+// ---------------------------------------- Profil si Actualizare date admin ---------------------------------------------------- {}
+// Route::get('/profil-admin', [App\Http\Controllers\AdminMediciController::class, 'show_profil_admin'])->name('profil-admin');
+
+// ---------------------------------------- Programare medic ---------------------------------------------------- {}
+Route::get('/programare/{id}', [App\Http\Controllers\ProgramareController::class, 'programare']);
 
 
 Route::group(['prefix' => 'admin'], function () {

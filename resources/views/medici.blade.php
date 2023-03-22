@@ -51,7 +51,7 @@
         <div class="container-fluid">
             <div class="row" id="nav-links">
                 <ul class="nav-list">
-                    <a href="/"><li><i class="fa-solid fa-left-long"></i>&nbsp;&nbsp;Inapoi</li></a>
+                    <a href="/medici"><li><i class="fa-solid fa-left-long"></i>&nbsp;&nbsp;Inapoi</li></a>
                 </ul>
             </div>
         </div>
@@ -72,7 +72,7 @@
                         <p>{{ $medic->specialitate_medic }}</p>
                     </div>
                     <div class="actiuni">
-                        Fa o programare!
+                        <a href="/programare/{{ $medic->id }}">fa programare bai baiatule</a>
                     </div>
                 </div>
             </div>

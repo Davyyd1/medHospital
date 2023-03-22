@@ -15,8 +15,7 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -420,14 +419,16 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                @if(Auth::check() && Auth::user()->role_id==1)
+                                {{-- @if(Auth::check() && Auth::user()->role_id==1) --}}
                                 {{-- editabil --}}
-                                <a class="dropdown-item" href="/profil-admin/{{ Auth::user()->id }}">Profil</a>
-                                @elseif(Auth::check() && Auth::user()->role_id== 3)
+                                {{-- <a class="dropdown-item" href="{{ route('profil-admin') }}">Profil</a> --}}
+                                {{-- <a class="dropdown-item" href="/profil-admin/{{ Auth::user()->id }}">Profil</a> --}}
+                                @if(Auth::check() && Auth::user()->role_id== 3)
                                 {{-- editabol --}}
-                                <a class="dropdown-item" href="/profil-doctor/{{ Auth::user()->id }}">Profil</a> 
-                                @else
-                                <a class="dropdown-item" href="/profil-pacient/{{ Auth::user()->id }}">Profil</a>
+                                <a class="dropdown-item" href="{{ route('profil-doctor') }}">Profil</a>
+                                @elseif(Auth::check() && Auth::user()->role_id== 2)
+                                <a class="dropdown-item" href="{{ route('profil-pacient') }}">Profil</a>
+                                
                                 @endif
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
