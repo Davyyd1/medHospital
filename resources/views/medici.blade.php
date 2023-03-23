@@ -1,18 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    {{-- @if(Auth::check() && Auth::user()->role_id==1)
-    <div class="section-second">
-        <div class="container-fluid">
-            <div class="row" id="nav-links">
-                <ul class="nav-list">
-                    <a href="medici"><li>Medici</li></a>
-                    <a href=""><li>Pacienti</li></a>
-                    <a href=""><li>Contact</li></a>
-                </ul>
-            </div>
-        </div>
-    </div>
-    @endif --}}
+    
     <section class="search">
         <div class="container-fluid" id="container-search">
             
@@ -72,7 +60,10 @@
                         <p>{{ $medic->specialitate_medic }}</p>
                     </div>
                     <div class="actiuni">
-                        <a href="/programare/{{ $medic->id }}">fa programare bai baiatule</a>
+                        <a href="/programare/{{ $medic->id }}">Programeaza-te!</a>
+                        @if(Auth::check() && Auth::user()->role_id==2)
+                        <a href="{{ url('profil-doctor/'.$medic->id) }}">Vezi medicul</a>
+                        @endif
                     </div>
                 </div>
             </div>

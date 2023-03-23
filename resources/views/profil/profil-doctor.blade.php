@@ -11,6 +11,7 @@
                         <div class="card-head">
                             <h2>Profil doctor</h2><hr>
                         </div>
+                        @if($doctor)
                         <form action="{{ route('profil-doctor') }}" id="call-back-form" class="call-back-form" name="call-back-form" enctype="multipart/form-data" method="POST">
                             @csrf
                             @method('PUT')
@@ -50,6 +51,14 @@
 
                             <button type='submit' class='btn btn-primary' style="float: right;" id="actualizeaza-date-medic">Actualizeaza date</button>
                         </form>
+                        {{-- @else
+                        {{ $doctorShow->nume_medic }}
+                        {{ $doctorShow->prenume_medic }}
+                        {{ $doctorShow->specialitate_medic }}
+                        {{ $doctorShow->studii }}
+                        {{ $doctorShow->program }}
+                        <a href="/programare/{{ $doctorShow->id }}">Programeaza-te!</a> --}}
+                        @endif
                         <div id="errors" style="background"></div>
                     </div>
                 </div>

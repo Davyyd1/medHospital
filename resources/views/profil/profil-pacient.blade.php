@@ -8,8 +8,9 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="card-head">
-                            <h2>Profil pacient</h2><hr>
+                            <h2>Profil pacient | Cod pacient: {{ $pacient->cod_pacient }}</h2><hr>
                         </div>
+                        
                         <form action="{{ route('profil-pacient') }}" id="call-back-form" class="call-back-form" name="call-back-form"  method="POST">
                             @csrf
                             @method('PUT')
@@ -41,11 +42,6 @@
                             <div class="mb-3">
                                 <label class="form-label">Telefon</label>
                                 <input type="text" class='form-control' name='telefon' placeholder="Telefon*" value="{{ $pacient->telefon }}">
-                            </div>
-
-                            <div class="mb-3">
-                                <label class="form-label">Cod pacient</label>
-                                <input type="text" id="cod_pacient" class='form-control' name='cod_pacient' placeholder="Cod pacient*" value="{{ $pacient->cod_pacient }}" >
                             </div>
 
                             <button type='button' class='btn btn-primary' style="float: right;" onclick="save_form()">Actualizeaza date</button>

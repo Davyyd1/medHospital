@@ -71,17 +71,4 @@ class AdminMediciController extends Controller
         ];
     }
 
-    // public function show_profil_admin(Request $request){
-    //     return view('profil.profil-admin');
-    // }
-
-    public function show_profil_doctor(Request $request){
-        $doctor = UsersMedicInfo::where('user_id', Auth::user()->id)->first();
-        return view('profil.profil-doctor',compact('doctor'));
-    }
-
-    public function show_profil_pacient(Request $request){
-        $pacient = UserInfo::where('user_id', Auth::user()->id)->first();
-        return view('profil.profil-pacient', compact('pacient'));
-    }
 }
