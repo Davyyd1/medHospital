@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Laravel</title>
-    
-    
+
+
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -15,18 +15,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js">
+    </script>
     <!-- this should go after your </body> -->
-    
+
 
     {{-- scripts --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -415,83 +420,85 @@
     <header class="container-fluid">
         @if (Route::has('login'))
             <div class="row" id="section-hero">
-                    <div class="header-title">
-                        <a href="/" id="title"><span style="color:white">med</span> <span
-                                style="color:#e41274;">Hospital</span></a>
-                    </div>
-                    
-                    <div class="header-auth">
-                        @auth
+                <div class="header-title">
+                    <a href="/" id="title"><span style="color:white">med</span> <span
+                            style="color:#e41274;">Hospital</span></a>
+                </div>
+
+                <div class="header-auth">
+                    @auth
                         <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                {{-- @if(Auth::check() && Auth::user()->role_id==1) --}}
-                                {{-- editabil --}}
-                                {{-- <a class="dropdown-item" href="{{ route('profil-admin') }}">Profil</a> --}}
-                                {{-- <a class="dropdown-item" href="/profil-admin/{{ Auth::user()->id }}">Profil</a> --}}
-                                @if(Auth::check() && Auth::user()->role_id== 3)
-                                {{-- editabol --}}
-                                <a class="dropdown-item" href="{{ route('profil-doctor') }}">Profil</a>
-                                @elseif(Auth::check() && Auth::user()->role_id== 2)
-                                <a class="dropdown-item" href="{{ route('profil-pacient') }}">Profil</a>
-                                
+                                @if (Auth::check() && Auth::user()->role_id == 3)
+                                    <a class="dropdown-item" href="{{ route('profil-doctor') }}">Profil</a>
+                                @elseif(Auth::check() && Auth::user()->role_id == 2)
+                                    <a class="dropdown-item" href="{{ route('profil-pacient') }}">Profil</a>
                                 @endif
 
+                                {{-- @if (Auth::check() && Auth::user()->role_id == 2) --}}
+                                <a class="dropdown-item" href="{{ route('programari') }}">Programari</a>
+                                {{-- @elseif(Auth::check() && Auth::user()->role_id==3)
+                                <a class="dropdown-item" href="{{ route('programari-medic') }}">Programari</a>
+                                @endif --}}
+
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                                   onclick="event.preventDefault();
+                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                                
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                     @csrf
                                 </form>
                             </div>
                         </li>
-                        @else
-                            <a href="{{ route('login') }}" id="auth">Inregistreaza-te</a>
+                    @else
+                        <a href="{{ route('login') }}" id="auth">Inregistreaza-te</a>
 
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" id="inregistrare">Creeaza cont</a>
-                            @endif
-                        @endauth
-                    </div>
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" id="inregistrare">Creeaza cont</a>
+                        @endif
+                    @endauth
+                </div>
                 {{-- </div> --}}
             </div>
         @endif
     </header>
 
 
-@yield('content')
+    @yield('content')
 
 
 
-<footer>
-    <div class="last-section">
-        <div class="container-fluid">
-            <div class="row" id="footer">
-                <div class="story-footer-1">
-                    <h3><span style="color:white">med</span><span
-                        style="color:#e41274;">Hospital</span></h3>
-                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis officiis iste a, corrupti eaque dolorem distinctio, cupiditate hic exercitationem numquam sequi ea voluptatum excepturi aspernatur officia ex unde dolor consequuntur! </p>
-                </div>
-                <div class="story-footer-2">
-                    <p>Linkuri site</p>
-                    <a href="">Medici</a><br>
-                    <a href="">Pacienti</a>
-                </div>
-                <div class="story-footer-3">
-                    <p>Servicii</p>
-                    <a href=""></a><br>
-                    <a href=""></a>
+    <footer>
+        <div class="last-section">
+            <div class="container-fluid">
+                <div class="row" id="footer">
+                    <div class="story-footer-1">
+                        <h3><span style="color:white">med</span><span style="color:#e41274;">Hospital</span></h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facilis officiis iste a, corrupti
+                            eaque dolorem distinctio, cupiditate hic exercitationem numquam sequi ea voluptatum
+                            excepturi aspernatur officia ex unde dolor consequuntur! </p>
+                    </div>
+                    <div class="story-footer-2">
+                        <p>Linkuri site</p>
+                        <a href="">Medici</a><br>
+                        <a href="">Pacienti</a>
+                    </div>
+                    <div class="story-footer-3">
+                        <p>Servicii</p>
+                        <a href=""></a><br>
+                        <a href=""></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </body>
 
 </html>

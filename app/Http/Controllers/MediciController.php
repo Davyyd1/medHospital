@@ -18,6 +18,12 @@ class MediciController extends Controller
         return view('profil.profil-doctor',compact('doctor'));
     }
 
+    public function vizibil_pacient_profil_medic(Request $request, $id){
+        $doctor = UsersMedicInfo::where('id', $id)->first();
+        return view('profil.profil-medic',compact('doctor'));
+    }
+
+
     public function show(Request $request)
     {
         // $medici = UsersMedicInfo::Paginate(5);

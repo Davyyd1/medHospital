@@ -62,7 +62,7 @@
                     <div class="actiuni">
                         <a href="/programare/{{ $medic->id }}">Programeaza-te!</a>
                         @if(Auth::check() && Auth::user()->role_id==2)
-                        <a href="{{ url('profil-doctor/'.$medic->id) }}">Vezi medicul</a>
+                        <a href="{{ url('profil-medic/'.$medic->id) }}">Vezi medicul</a>
                         @endif
                     </div>
                 </div>

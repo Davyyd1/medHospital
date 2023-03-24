@@ -63,7 +63,6 @@
                                     <option value="masculin">Masculin</option>
                                     <option value="feminin">Feminin</option>
                                 </select>
-                                {{-- <input id="sex" type="text" class="form-control @error('sex') is-invalid @enderror" name="sex" value="{{ old('sex') }}" required autocomplete="sex" autofocus> --}}
 
                                 @error('sex')
                                     <span class="invalid-feedback" role="alert">

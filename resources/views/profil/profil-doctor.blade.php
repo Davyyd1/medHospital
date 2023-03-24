@@ -51,15 +51,8 @@
 
                             <button type='submit' class='btn btn-primary' style="float: right;" id="actualizeaza-date-medic">Actualizeaza date</button>
                         </form>
-                        {{-- @else
-                        {{ $doctorShow->nume_medic }}
-                        {{ $doctorShow->prenume_medic }}
-                        {{ $doctorShow->specialitate_medic }}
-                        {{ $doctorShow->studii }}
-                        {{ $doctorShow->program }}
-                        <a href="/programare/{{ $doctorShow->id }}">Programeaza-te!</a> --}}
                         @endif
-                        <div id="errors" style="background"></div>
+                        <div id="errors"></div>
                     </div>
                 </div>
             </div>

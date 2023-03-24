@@ -39,15 +39,10 @@ class ProgramareController extends Controller
          }
          $programare = new Programari();
          $programare->medic_id = $request->medic_id;
-         $programare->nume = $request->nume;
-         $programare->prenume = $request->prenume;
-         $programare->varsta = $request->varsta;
-         $programare->sex = $request->sex;
-         $programare->cnp = $request->cnp;
-         $programare->telefon = $request->telefon;
-         if(!$medic){
-            $programare->cod_pacient = $pacient->cod_pacient;
-         }
+         $programare->user_id = Auth::user()->id;
+         // if(!$medic){
+         //    $programare->cod_pacient = $pacient->cod_pacient;
+         // }
          $programare->data = $request->data;
          $programare->save();
 
@@ -68,12 +63,7 @@ class ProgramareController extends Controller
    private function validate_input()
    {
       return [
-         'nume' => 'required',
-         'prenume' => 'required',
-         'varsta' => 'required',
-         'sex' => 'required',
-         'cnp' => 'required',
-         'telefon' => 'required|digits:10',
+         
          'data' => 'required|unique:programari'
       ];
    }

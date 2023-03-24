@@ -20,8 +20,8 @@
         <label class="form-label">Sex</label>
         <select id="sex" class="form-control @error('sex') is-invalid @enderror" name="sex" required autofocus>
             <option value="">Alege genul</option>
-            <option value="masculin">Masculin</option>
-            <option value="feminin">Feminin</option>
+            <option value="masculin" {{ $pacient->sex == "masculin" ? 'selected' : '' }}>Masculin</option>
+            <option value="feminin" {{ $pacient->sex == "feminin" ? 'selected' : '' }}>Feminin</option>
         </select>
         {{-- <input type="text" class='form-control' name='sex' placeholder="Sex*" value="{{ $pacient->sex }}"> --}}
     </div>

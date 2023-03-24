@@ -3,7 +3,9 @@
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\admin;
-
+use App\UsersMedicInfo;
+// use View;
+use Illuminate\Support\Facades\View;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,7 +38,7 @@ Route::get('/profil-doctor', [App\Http\Controllers\MediciController::class, 'sho
 Route::put('/profil-doctor', [App\Http\Controllers\MediciController::class, 'actualizeaza_date_medic'])->name('profil-doctor');
 
 // ---------------------------------------- Profil medic perspectiva user(pacient) ---------------------------------------------------- {}
-Route::get('/profil-medic/{id}', [App\Http\Controllers\MediciController::class, 'show_profil_doctor'])->name('profil-medic');
+Route::get('/profil-medic/{id}', [App\Http\Controllers\MediciController::class, 'vizibil_pacient_profil_medic'])->name('profil-medic');
 
 
 // ---------------------------------------- Profil si Actualizare date pacient ---------------------------------------------------- {}
@@ -47,7 +49,18 @@ Route::put('/profil-pacient', [App\Http\Controllers\PacientiController::class, '
 Route::get('/programare/{id}', [App\Http\Controllers\ProgramareController::class, 'programare']);
 Route::post('/programare_submit', [App\Http\Controllers\ProgramareController::class, 'programare_submit']);
 
+// ---------------------------------------- Notificari pacient ( programari )  ---------------------------------------------------- {}
+Route::get('/programari', [App\Http\Controllers\NotificariController::class, 'programari'])->name('programari');
+
+// ---------------------------------------- Notificari medic ( programari )  ---------------------------------------------------- {}
+// Route::get('/programari-medic', [App\Http\Controllers\NotificariController::class, 'programari_medic'])->name('programari-medic');
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
+
+// View::composer('notificari.show-medic', function($view){
+//     $view->with('view', UsersMedicInfo::where('id', '10')
+//     ->leftjoin('')
+//     ->get());
+// });
