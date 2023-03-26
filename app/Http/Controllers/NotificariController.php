@@ -19,10 +19,12 @@ class NotificariController extends Controller
     
       $notificariUser = Programari::where('appointments.user_id', Auth::user()->id)
       ->leftjoin('users_medic_info','appointments.medic_id', 'users_medic_info.id')
+      
       ->get();
       
       // $notificariMedic = Programari::where('appointments.medic_id', Auth::user()->id)
       // ->leftjoin('users_medic_info','appointments.medic_id','users_medic_info.id')
+
       // ->get();
 
       return view('notificari.show',compact('notificariUser'));

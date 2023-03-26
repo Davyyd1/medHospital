@@ -49,7 +49,7 @@
                                 <input type="text" class='form-control' name='program' placeholder="Program*" value={{ $doctor->program }}>
                             </div>
 
-                            <button type='submit' class='btn btn-primary' style="float: right;" id="actualizeaza-date-medic">Actualizeaza date</button>
+                            <button type='button' class='btn btn-primary' style="float: right;" id="actualizeaza-date-medic" onclick="save_form()">Actualizeaza date</button>
                         </form>
                         @endif
                         <div id="errors"></div>
@@ -63,57 +63,57 @@
 
 @endsection
 <script>
-     $("#actualizeaza-date-medic").click(function() {
-                var data = new FormData($('#call-back-form')[0]);
-                $.ajax({
-                    url: "/profil-doctor",
-                    method: "POST",
-                    data: data,
-                    processData: false,
-                    contentType: false,
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(data) {
-                    if (data.status == 0) {
-                        $("#errors").html(data.mesaj);
-                        $("#errors").fadeTo(2000, 500).slideUp(500);
-                        $("#errors").slideUp(500);
-                    }
-                    if (data.status == 1) {
-                        $('#call-back-form')[0].reset();
-                        $("#errors").html(data.mesaj);
-                        $("#errors").fadeTo(2000, 500).slideUp(500);
-                        $("#errors").slideUp(500);
-                    }
-                }
-                })
+    //  $("#actualizeaza-date-medic").click(function() {
+    //             var data = new FormData($('#call-back-form')[0]);
+    //             $.ajax({
+    //                 url: "/profil-doctor",
+    //                 method: "POST",
+    //                 data: data,
+    //                 processData: false,
+    //                 contentType: false,
+    //                 headers: {
+    //                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    //                 },
+    //                 success: function(data) {
+    //                 if (data.status == 0) {
+    //                     $("#errors").html(data.mesaj);
+    //                     $("#errors").fadeTo(2000, 500).slideUp(500);
+    //                     $("#errors").slideUp(500);
+    //                 }
+    //                 if (data.status == 1) {
+    //                     $('#call-back-form')[0].reset();
+    //                     $("#errors").html(data.mesaj);
+    //                     $("#errors").fadeTo(2000, 500).slideUp(500);
+    //                     $("#errors").slideUp(500);
+    //                 }
+    //             }
+    //             })
 
-     });
+    //  });
     //         });
-    // function save_form() {
-    //     var data = $("#call-back-form").serialize();
-    //     $.ajax({
-    //         url: "/profil-doctor",
-    //         method: "post",
-    //         data: data,
-    //         headers: {
-    //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    //         },
-    //         success: function(data) {
-    //             if (data.status == 0) {
-    //                 $("#errors").html(data.fail);
-    //                 $("#errors").html(data.mesaj);
-    //                 $("#errors").fadeTo(2000, 500).slideUp(500);
-    //                 $("#errors").slideUp(500);
-    //             }
-    //             if (data.status == 1) {
-    //                 $('#call-back-form')[0].reset();
-    //                 $("#errors").html(data.mesaj);
-    //                 $("#errors").fadeTo(2000, 500).slideUp(500);
-    //                 $("#errors").slideUp(500);
-    //             }
-    //         }
-    //     })
-    // }
+    function save_form() {
+        var data = $("#call-back-form").serialize();
+        $.ajax({
+            url: "/profil-doctor",
+            method: "post",
+            data: data,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(data) {
+                if (data.status == 0) {
+                    $("#errors").html(data.fail);
+                    $("#errors").html(data.mesaj);
+                    $("#errors").fadeTo(2000, 500).slideUp(500);
+                    $("#errors").slideUp(500);
+                }
+                if (data.status == 1) {
+                    $('#call-back-form')[0].reset();
+                    $("#errors").html(data.mesaj);
+                    $("#errors").fadeTo(2000, 500).slideUp(500);
+                    $("#errors").slideUp(500);
+                }
+            }
+        })
+    }
 </script>

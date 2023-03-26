@@ -55,7 +55,7 @@ class MediciController extends Controller
     public function actualizeaza_date_medic(Request $request)
     {
         $userMedicInfo = UsersMedicInfo::where('user_id', Auth::user()->id)
-        ->leftjoin('users', 'users_medic_info.user_id','users.id')
+        // ->leftjoin('users', 'users_medic_info.user_id','users.id')
         ->first();
         $validator = Validator::make($request->input(), $this->validate_input_medici());
         if ($userMedicInfo) {
@@ -68,7 +68,7 @@ class MediciController extends Controller
                 ]);
             }
             $userMedicInfo->update([
-                'avatar' => $request->image,
+                // 'avatar' => $request->image,
                 'nume_medic' => $request->nume,
                 'prenume_medic' => $request->prenume,
                 'specialitate_medic' => $request->specialitate,

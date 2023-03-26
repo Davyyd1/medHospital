@@ -15,25 +15,32 @@
                                 @foreach ($notificariUser as $notificari)
                                     <h5>Programare:</h5>
                                     <div class="mb-3">
-                                        {{ $notificari->nume }}
+                                        {{-- {{ $notificari->nume }}
                                         {{ $notificari->prenume }}
                                         {{ $notificari->varsta }}
                                         {{ $notificari->sex }}
                                         {{ $notificari->cnp }}
-                                        {{ $notificari->telefon }}
-                                        @if ($notificari->cod_pacient)
+                                        {{ $notificari->telefon }} --}}
+                                        {{-- @if ($notificari->cod_pacient)
                                             {{ $notificari->cod_pacient }}
-                                        @endif
+                                        @endif --}}
                                         Medic: {{ $notificari->nume_medic }} {{ $notificari->prenume_medic }}
                                         Data: {{ $notificari->data }}
+                                        Specialitatea: {{$notificari->specialitate_medic}}
                                     </div>
                                 @endforeach
                             @elseif(Auth::check() && Auth::user()->role_id == 3)
-                                @foreach (get_medic_id(Auth::user()->id) as $programariMedic)
+                                @foreach (get_medic_appointments(Auth::user()->id) as $programariMedic)
                                     <h5>Programare:</h5>
                                     <div class="mb-3">
-                                        {{ $programariMedic->medic_id}} sdasdasdas
-                                        {{ $programariMedic->nume}} sdasdasdas
+                                        {{-- {{ $programariMedic->medic_id}} --}}
+                                        Nume pacient: {{ $programariMedic->nume}} {{$programariMedic->prenume}}
+                                        Varsta: {{ $programariMedic->varsta }}
+                                        Sex: {{ $programariMedic->sex }}
+                                        CNP: {{ $programariMedic->cnp }}
+                                        Telefon: {{ $programariMedic->telefon}}
+                                        Cod pacient: {{ $programariMedic->cod_pacient }}
+                                        Data: {{ $programariMedic->data }}
                                     </div>
                                 @endforeach
                             @endif

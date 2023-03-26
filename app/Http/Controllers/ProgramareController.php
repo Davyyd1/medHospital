@@ -40,6 +40,7 @@ class ProgramareController extends Controller
          $programare = new Programari();
          $programare->medic_id = $request->medic_id;
          $programare->user_id = Auth::user()->id;
+         $programare->pacient_id = get_pacient_id($pacient->id);
          // if(!$medic){
          //    $programare->cod_pacient = $pacient->cod_pacient;
          // }
@@ -64,7 +65,7 @@ class ProgramareController extends Controller
    {
       return [
          
-         'data' => 'required|unique:programari'
+         'data' => 'required|unique:appointments'
       ];
    }
 }
