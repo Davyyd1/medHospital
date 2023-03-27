@@ -51,7 +51,7 @@
             <div class="row" id="medici">
                 <div class="medic">
                     <div class="imagine-medic">
-                        <img src="/storage/images/{{ get_medic_img($medic->user_id) }}" alt="imagine" width="250" height="150">
+                        <img src="/storage/images/{{ $medic->user_id }}/{{ get_medic_img($medic->user_id) }}" alt="imagine" width="250" height="150">
                     </div>
                     <div class="nume-medic">
                         <h5>{{ $medic->nume_medic }} {{ $medic->prenume_medic }}</h5>

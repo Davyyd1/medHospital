@@ -31,6 +31,7 @@
                                 @endforeach
                             @elseif(Auth::check() && Auth::user()->role_id == 3)
                                 @foreach (get_medic_appointments(Auth::user()->id) as $programariMedic)
+                                    @if($programariMedic->pacient_id)
                                     <h5>Programare:</h5>
                                     <div class="mb-3">
                                         {{-- {{ $programariMedic->medic_id}} --}}
@@ -42,6 +43,9 @@
                                         Cod pacient: {{ $programariMedic->cod_pacient }}
                                         Data: {{ $programariMedic->data }}
                                     </div>
+                                    @else
+                                    Nu exista programari
+                                    @endif
                                 @endforeach
                             @endif
                             <div id="errors"></div>

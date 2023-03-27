@@ -31,54 +31,28 @@
     
     <div class="section-1-medici">
         <div class="container-fluid">
+            @foreach($result as $medic)
             <div class="row" id="medici">
                 <div class="medic">
                     <div class="imagine-medic">
-                        <img src="" alt="imagine">
+                        <img src="/storage/images/{{ $medic->user_id }}/{{ get_medic_img($medic->user_id) }}" alt="imagine" width="250" height="150">
                     </div>
                     <div class="nume-medic">
-                        <h5>Medic Avram Iancu</h5>
+                        <h5>{{ $medic->nume_medic }} {{ $medic->prenume_medic }}</h5>
                     </div>
-                    <div class="descriere-medic">
-                        <p>Descriere</p>
+                    <div class="specialitate-medic">
+                        <p>{{ $medic->specialitate_medic }}</p>
                     </div>
                     <div class="actiuni">
-                        Fa o programare!
+                        <a href="/programare/{{ $medic->id }}">Programeaza-te!</a>
+                        @if(Auth::check() && Auth::user()->role_id==2)
+                        <a href="{{ url('profil-medic/'.$medic->id) }}">Vezi medicul</a>
+                        @endif
                     </div>
                 </div>
             </div>
-            <div class="row" id="medici">
-                <div class="medic">
-                    <div class="imagine-medic">
-                        <img src="" alt="imagine">
-                    </div>
-                    <div class="nume-medic">
-                        <h5>Medic Avram Iancu</h5>
-                    </div>
-                    <div class="descriere-medic">
-                        <p>Descriere</p>
-                    </div>
-                    <div class="actiuni">
-                        Fa o programare!
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="medici">
-                <div class="medic">
-                    <div class="imagine-medic">
-                        <img src="" alt="imagine">
-                    </div>
-                    <div class="nume-medic">
-                        <h5>Medic Avram Iancu</h5>
-                    </div>
-                    <div class="descriere-medic">
-                        <p>Descriere</p>
-                    </div>
-                    <div class="actiuni">
-                        Fa o programare!
-                    </div>
-                </div>
-            </div>
+            @endforeach
+    
             <div class="row" id="medici">
                 <div class="medic">
                     <a href="/medici">Vezi toti medicii</a>

@@ -17,9 +17,10 @@ use Illuminate\Support\Facades\View;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', [App\Http\Controllers\WelcomeController::class, 'show_welcome']);
 
 Auth::routes();
 
@@ -59,8 +60,3 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
-// View::composer('notificari.show-medic', function($view){
-//     $view->with('view', UsersMedicInfo::where('id', '10')
-//     ->leftjoin('')
-//     ->get());
-// });

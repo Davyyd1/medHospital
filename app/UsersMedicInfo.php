@@ -11,5 +11,5 @@ class UsersMedicInfo extends Model
 {
     protected $table = 'users_medic_info';
 
-    protected $fillable = ['nume_medic','prenume_medic','specialitate_medic','studii','program'];
+    protected $fillable = ['avatar','nume_medic','prenume_medic','specialitate_medic','studii','program'];
 }

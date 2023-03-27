@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+// use App\Models\User;
+use App\User as AppUser;
+use App\User;
 use App\UserInfo;
 use App\UsersMedicInfo;
 use Illuminate\Http\Request;
@@ -55,8 +57,8 @@ class MediciController extends Controller
     public function actualizeaza_date_medic(Request $request)
     {
         $userMedicInfo = UsersMedicInfo::where('user_id', Auth::user()->id)
-        // ->leftjoin('users', 'users_medic_info.user_id','users.id')
         ->first();
+
         $validator = Validator::make($request->input(), $this->validate_input_medici());
         if ($userMedicInfo) {
             if ($validator->fails()) {
@@ -75,6 +77,17 @@ class MediciController extends Controller
                 'studii' => $request->studii,
                 'program' => $request->program
             ]);
+
+        $userAvatarUpdate = User::where('id', Auth::user()->id)->first();
+        if($request->hasFile('image')){
+            $destination_folder = 'public/images/'.Auth::user()->id;
+            $image = $request->file('image');
+            $image_name = time().rand().'.jpg';
+            $path = $request->file('image')->storeAs($destination_folder, $image_name);
+            $userAvatarUpdate->avatar = $image_name;
+        }
+        $userAvatarUpdate->update();
+
             return response(['mesaj' => 'Datele medicului au fost actualizate cu succes!', 'status' => 1]);
         }
         return response(['mesaj' => 'Ceva nu a functionat bine!', 'status' => 0]);

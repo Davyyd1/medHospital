@@ -42,3 +42,14 @@ if(!function_exists('get_pacient_id'))
     }
 }
 
+if(!function_exists('get_medic_avatar'))
+{
+    function get_medic_avatar()
+    {
+        $medic_avatar = UsersMedicInfo::where('user_id', Auth::user()->id)
+        ->leftjoin('users', 'users_medic_info.user_id','users.id')
+        ->first();
+        
+        return $medic_avatar->avatar;
+    }
+}
