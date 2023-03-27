@@ -3,6 +3,7 @@
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\admin;
+use App\Http\Middleware\programare;
 use App\UsersMedicInfo;
 // use View;
 use Illuminate\Support\Facades\View;
@@ -47,8 +48,8 @@ Route::get('/profil-pacient', [App\Http\Controllers\PacientiController::class, '
 Route::put('/profil-pacient', [App\Http\Controllers\PacientiController::class, 'actualizeaza_date_pacient'])->name('profil-pacient');
 
 // ---------------------------------------- Programare  ---------------------------------------------------- {}
-Route::get('/programare/{id}', [App\Http\Controllers\ProgramareController::class, 'programare']);
-Route::post('/programare_submit', [App\Http\Controllers\ProgramareController::class, 'programare_submit']);
+Route::get('/programare/{id}', [App\Http\Controllers\ProgramareController::class, 'programare'])->middleware(programare::class);
+Route::post('/programare_submit', [App\Http\Controllers\ProgramareController::class, 'programare_submit'])->middleware(programare::class);
 
 // ---------------------------------------- Notificari pacient ( programari )  ---------------------------------------------------- {}
 Route::get('/programari', [App\Http\Controllers\NotificariController::class, 'programari'])->name('programari');

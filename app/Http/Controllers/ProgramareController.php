@@ -18,6 +18,7 @@ class ProgramareController extends Controller
       $medic = UsersMedicInfo::where('id', $id)->first();
       $doctor = UsersMedicInfo::where('user_id', Auth::user()->id)->first();
       $pacient = UserInfo::where('user_id', Auth::user()->id)->first();
+      
       return view('programare-medic.programare', compact('medic', 'pacient', 'doctor'));
    }
 
