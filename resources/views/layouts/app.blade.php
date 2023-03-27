@@ -439,7 +439,9 @@
                                 @endif
 
                                 {{-- @if (Auth::check() && Auth::user()->role_id == 2) --}}
+                                @if(Auth::check() && Auth::user()->role_id!=1)
                                 <a class="dropdown-item" href="{{ route('programari') }}">Programari</a>
+                                @endif
                                 {{-- @elseif(Auth::check() && Auth::user()->role_id==3)
                                 <a class="dropdown-item" href="{{ route('programari-medic') }}">Programari</a>
                                 @endif --}}
