@@ -13,10 +13,10 @@
                         </div>
                         <div class="mb-3">
                             <div class="imagine-medic">
-                                <img src="/storage/images/{{ get_medic_img($doctor->user_id) }}" alt="imagine" width="250" height="150">
+                                <img src="/storage/images/{{ $doctor->user_id }}/{{ get_medic_img($doctor->user_id) }}" alt="imagine" width="250" height="150">
                             </div>
                         </div>
-                        {{-- de facut cu divuri --}}
+
                         <div class="mb-3">
                             <div>{{ $doctor->nume_medic }}</div>
                         </div>
