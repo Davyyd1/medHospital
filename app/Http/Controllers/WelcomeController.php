@@ -14,7 +14,7 @@ use Validator;
 class WelcomeController extends Controller
 {
     public function show_welcome(Request $request){
-        $result = UsersMedicInfo::orderby('created_at', 'desc')->limit(3)->get();
+        $result = UsersMedicInfo::orderby('created_at', 'desc')->limit(4)->get();
         return view('/welcome',compact('result'));
     }
 }

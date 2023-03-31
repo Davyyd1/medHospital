@@ -36,7 +36,7 @@ class MediciController extends Controller
             ->where('prenume_medic', 'LIKE', "%" . $prenume . "%")
             ->where('specialitate_medic', 'LIKE', '%' . $specialitate . '%')
             ->orderby('created_at','desc')
-            ->paginate(3);
+            ->paginate(8);
         return view('medici', compact( 'result'));
     }
 
@@ -50,7 +50,7 @@ class MediciController extends Controller
             ->where('prenume_medic', 'LIKE', "%" . $prenume . "%")
             ->where('specialitate_medic', 'LIKE', '%' . $specialitate . '%')
             ->orderby('created_at','desc')
-            ->paginate(3);
+            ->paginate(8);
         return view('medici', compact('result', 'medici'));
     }
 
