@@ -1,13 +1,18 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
-
-                <div class="card-body">
+<div id="body" class="theme-green">
+    
+    <div class="auth-main">
+        <div class="auth_div vivify fadeIn">
+            <div class="auth_brand">
+                <a class="navbar-brand" href="#"><img src="assets/images/icon.svg" width="50" class="d-inline-block align-top mr-2" alt="">Mooli</a>                                                
+            </div>
+            <div class="card forgot-pass">
+                <div class="header">
+                    <p class="lead"><strong>Oops</strong>,<br> forgot something?</p>                    
+                </div>
+                <div class="body">
                     <form method="POST" action="{{ route('password.update') }}">
                         @csrf
 
@@ -60,6 +65,17 @@
                 </div>
             </div>
         </div>
+        <div class="animate_lines">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
     </div>
+    <!-- END WRAPPER -->
+
 </div>
+
 @endsection

@@ -25,6 +25,7 @@ if(!function_exists('get_medic_appointments'))
         $medic = UsersMedicInfo::where('users_medic_info.user_id', $medic_id)
         ->leftjoin('appointments', 'users_medic_info.id', 'appointments.medic_id')
         ->leftjoin('users_info', 'appointments.pacient_id', 'users_info.id')
+        ->leftjoin('users', 'users_info.user_id', 'users.id')
         ->get();
         
         return $medic;

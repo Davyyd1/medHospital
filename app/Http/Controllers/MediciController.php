@@ -14,14 +14,16 @@ use Validator;
 class MediciController extends Controller
 {
     public function show_profil_doctor(Request $request){
-        $doctor = UsersMedicInfo::where('user_id', Auth::user()->id)->first();
-
-        // $doctorShow = UsersMedicInfo::where('id', $id)->first();
+        $doctor = UsersMedicInfo::where('user_id', Auth::user()->id)
+        ->leftjoin('users', 'users_medic_info.user_id', 'users.id')
+        ->first();
         return view('profil.profil-doctor',compact('doctor'));
     }
 
     public function vizibil_pacient_profil_medic(Request $request, $id){
-        $doctor = UsersMedicInfo::where('id', $id)->first();
+        $doctor = UsersMedicInfo::where('users_medic_info.id', $id)
+        ->leftjoin('users', 'users_medic_info.user_id', 'users.id')
+        ->first();
         return view('profil.profil-medic',compact('doctor'));
     }
 
@@ -75,12 +77,13 @@ class MediciController extends Controller
                 'prenume_medic' => $request->prenume,
                 'specialitate_medic' => $request->specialitate,
                 'studii' => $request->studii,
-                'program' => $request->program
+                'program' => $request->program,
+                'descriere' => $request->descriere
             ]);
 
         $userAvatarUpdate = User::where('id', Auth::user()->id)->first();
         if($request->hasFile('image')){
-            $destination_folder = 'public/images/'.Auth::user()->id;
+            $destination_folder = 'public/images/';
             $image = $request->file('image');
             $image_name = time().rand().'.jpg';
             $path = $request->file('image')->storeAs($destination_folder, $image_name);
@@ -88,9 +91,12 @@ class MediciController extends Controller
         }
         $userAvatarUpdate->update();
 
-            return response(['mesaj' => 'Datele medicului au fost actualizate cu succes!', 'status' => 1]);
+            return response(['mesaj' => '<div class="alert alert-success" role="alert">
+            Datele pacientului au fost actualizate cu succes!</div>', 'status' => 1]);
         }
-        return response(['mesaj' => 'Ceva nu a functionat bine!', 'status' => 0]);
+        return response(['mesaj' => '<div class="alert alert-danger" role="alert">
+        ' . $validator->errors()->first() . '
+      </div>', 'status' => 0]);
     }
 
     private function validate_input_medici()
@@ -100,7 +106,8 @@ class MediciController extends Controller
             'prenume' => 'required',
             'specialitate' => 'required',
             'studii' => 'required',
-            'program' => 'required'
+            'program' => 'required',
+            'descriere' => 'required'
         ];
     }
 }

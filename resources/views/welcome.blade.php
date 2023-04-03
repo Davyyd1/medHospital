@@ -36,10 +36,10 @@
                                 <div class="card">
                                     <div class="body text-center">
                                         <div class="circle">
-                                            <img class="rounded-circle" src="/storage/images/{{ $medic->user_id }}/{{ get_medic_img($medic->user_id) }}" alt="" width="150" height="150">
+                                            <img class="rounded-circle" src="/storage/images/{{ get_medic_img($medic->user_id) }}" alt="" width="150" height="150">
                                         </div>
                                         <h6 class="mt-3 mb-0">{{ $medic->nume_medic }} {{ $medic->prenume_medic }}</h6>
-                                        <span>{{ $medic->specialitate_medic }}</span><br>
+                                        <span>{{ $medic->specialitate_medic }}</span><br><br>
                                         <a href="/programare/{{ $medic->id }}" style="padding:.3rem; background-color:orange; color:white; text-decoration:none; border-radius: .5rem;">Programeaza-te!</a>
                                         @if (Auth::check() && Auth::user()->role_id == 2)
                                         <a href="{{ url('profil-medic/' . $medic->id) }}" style="padding:.3rem; background-color:green; color:white; text-decoration:none; border-radius: .5rem; ">Vezi medicul</a>

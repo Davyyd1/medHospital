@@ -19,19 +19,19 @@
 
 
     {{-- scripts --}}
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" /> --}}
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
         integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Styles -->
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> --}}
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -412,6 +412,7 @@
                 color: rgb(107 114 128 / var(--tw-text-opacity))
             }
         }
+        #navbar-menu.d-none {display: none!important;}
     </style>
 
     <style>
@@ -426,7 +427,7 @@
         <!-- Page Loader -->
         <div class="page-loader-wrapper">
             <div class="loader">
-                <div class="mt-3"><img src="assets/images/icon.svg" width="40" height="40" alt="Mooli">
+                <div class="mt-3"><img src="../build/assets/images/icon.svg" width="40" height="40" alt="Mooli">
                 </div>
                 <p>Please wait...</p>
             </div>
@@ -505,7 +506,7 @@
         <div id="wrapper">
 
             <!-- Page top navbar -->
-            <nav class="navbar navbar-fixed-top">
+            <nav class="navbar navbar-fixed-top @if(!Auth::check()) d-none @endif">
                 <div class="container-fluid">
                     <div class="navbar-left">
                         <div class="navbar-btn">
@@ -515,8 +516,9 @@
                                     class="fa fa-align-left"></i></button>
                         </div>
                     </div>
+                    {{-- @if(Auth::check()) --}}
                     <div class="navbar-right">
-                        <div id="navbar-menu">
+                        <div id="navbar-menu" class="@if(!Auth::check()) d-none @endif">
                             <ul class="nav navbar-nav">
                                 <li class="dropdown hidden-xs">
                                     <a href="javascript:void(0);" class="dropdown-toggle icon-menu"
@@ -572,9 +574,11 @@
                             </ul>
                         </div>
                     </div>
+                    {{-- @endif --}}
                 </div>
             </nav>
             <!-- Main left sidebar menu -->
+            
             <div id="left-sidebar" class="sidebar light_active">
                 <a href="#" class="menu_toggle"><i class="fa fa-angle-left"></i></a>
                 <div class="navbar-brand">
@@ -588,7 +592,7 @@
                     <div class="user-account">
                         @if (Auth::check())
                             <div class="user_div">
-                                <img src="build/assets/images/user.png" class="user-photo"
+                                <img src="../build/assets/images/user.png" class="user-photo"
                                     alt="User Profile Picture">
                             </div>
 
@@ -608,8 +612,6 @@
                                         <li><a href="{{ route('profil-pacient') }}"><i
                                                     class="fa fa-user"></i>Profil</a></li>
                                     @endif
-                                    <li><a href="app-inbox.html"><i class="fa fa-envelope"></i>Messages</a></li>
-                                    <li><a href="setting.html"><i class="fa fa-gear"></i>Settings</a></li>
                                     <li class="divider"></li>
                                     @if (Auth::check())
                                         <a class="dropdown-item" href="{{ route('logout') }}"
@@ -626,81 +628,66 @@
                                 </ul>
                             </div>
                         @else
-                            <a href="{{ route('login') }}">Creaza un cont/Inregistreaza-te</a>
+                            <a href="{{ route('login') }}">Inregistreaza-te</a>
                         @endif
                     </div>
+                    @if(Auth::check())
                     <nav id="left-sidebar-nav" class="sidebar-nav">
                         <ul id="main-menu" class="metismenu animation-li-delay">
                             <li class="header">Hospital</li>
                             <li><a href="/"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                             <li class="active">
                                 <a href="#Doctors" class="has-arrow"><i
-                                        class="fa fa-user-md"></i><span>Doctors</span></a>
+                                        class="fa fa-user-md"></i><span>Doctori</span></a>
                                 <ul>
-                                    <li class="active"><a href="medici">All Doctors</a></li>
+                                    <li class="active"><a href="medici">Toti doctorii</a></li>
 
                                 </ul>
                             </li>
                             {{-- <li><a href="app-calendar.html"><i class="fa fa-calendar"></i> <span>Appointment</span></a></li> --}}
                             @if (Auth::check() && Auth::user()->role_id != 1)
                                 <li><i class="fa fa-calendar"></i><a class="dropdown-item"
-                                        href="{{ route('programari') }}">Appointments</a>
+                                        href="{{ route('programari') }}">Programari</a>
                             @endif
                             </li>
                             <li>
                                 <a href="#Patients" class="has-arrow"><i
-                                        class="fa fa-user-circle-o"></i><span>Patients</span></a>
+                                        class="fa fa-user-circle-o"></i><span>Pacienti</span></a>
                                 <ul>
-                                    <li><a href="patients-all.html">All Patient</a></li>
-                                    <li><a href="patients-add.html">Add Patient</a></li>
-                                    <li><a href="patients-profile.html">Patient Profile</a></li>
-                                    <li><a href="patients-invoice.html">Patient Invoices</a></li>
+                                    <li><a href="patients-all.html">Toti pacientii</a></li>
+                                    <li><a href="patients-add.html">Adauga pacient</a></li>
+                                    <li><a href="patients-profile.html">Profilul pacientului</a></li>
+                                    <li><a href="patients-invoice.html">Facturi pacient</a></li>
                                 </ul>
                             </li>
                             @if (Auth::check() && Auth::user()->role_id == 1)
                                 <li class="header">Admin</li>
-                                <li><a href="{{ url('adauga-medic') }}">Add Doctors</a></li>
+                                <li><a href="{{ url('adauga-medic') }}">Adauga Doctori</a></li>
                             @endif
                         </ul>
                     </nav>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <a href="" id="auth">Inregistreaza-te</a>
-    @if (Route::has('register'))
-        <a href="{{ route('register') }}" id="inregistrare">Creeaza cont</a>
-    @endif
-
-
     @yield('content')
 
-
-
     <!-- Javascript -->
-    <script src="/build/assets/bundles/libscripts.bundle.js"></script>
-    <script src="/build/assets/bundles/vendorscripts.bundle.js"></script>
+<script src="/build/assets/bundles/libscripts.bundle.js"></script>    
+<script src="/build/assets/bundles/vendorscripts.bundle.js"></script>
 
-    <!-- Vedor js file and create bundle with grunt  -->
+<!-- Vedor js file and create bundle with grunt  --> 
+<script src="/build/assets/vendor/dropify/js/dropify.min.js"></script>
+<script src="/build/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script><!-- bootstrap datepicker Plugin Js --> 
 
+<!-- Project core js file minify with grunt --> 
+<script src="/build/assets/bundles/mainscripts.bundle.js"></script>
+<script src="../js/pages/forms/dropify.js"></script>
 
-    <!-- Project core js file minify with grunt -->
-    <script src="/build/assets/bundles/mainscripts.bundle.js"></script>
+<script src="assets/bundles/libscripts.bundle.js"></script>    
+<script src="assets/bundles/vendorscripts.bundle.js"></script>
 </body>
 
 </html>

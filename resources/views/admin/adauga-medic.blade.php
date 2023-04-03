@@ -501,6 +501,10 @@
                         <input type="text" name="program" class="form-control" value="" placeholder="Program*">
                     </div>
                     <div class="col-md-6">
+                        <label>Descriere</label>
+                        <input type="text" name="descriere" class="form-control" value="" placeholder="Descriere*">
+                    </div>
+                    <div class="col-md-6">
                         <label>Poza medic</label>
                         <input type='file' class="form-control" name="image" />
                     </div>

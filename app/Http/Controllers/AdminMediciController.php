@@ -52,6 +52,7 @@ class AdminMediciController extends Controller
             $medic->specialitate_medic = $request->specialitate;
             $medic->studii = $request->studii;
             $medic->program = $request->program;
+            $medic->descriere = $request->descriere;
             $medic->save();
             return response([
                 'status'=>1,
