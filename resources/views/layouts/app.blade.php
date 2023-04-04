@@ -427,7 +427,7 @@
         <!-- Page Loader -->
         <div class="page-loader-wrapper">
             <div class="loader">
-                <div class="mt-3"><img src="../build/assets/images/icon.svg" width="40" height="40" alt="Mooli">
+                <div class="mt-3"><img src="/storage/images/{{ Auth::user()->avatar }}" width="40" height="40" alt="Mooli">
                 </div>
                 <p>Please wait...</p>
             </div>
@@ -510,7 +510,7 @@
                 <div class="container-fluid">
                     <div class="navbar-left">
                         <div class="navbar-btn">
-                            <a href="index.html"><img src="assets/images/icon.svg" alt="Mooli Logo"
+                            <a href="index.html"><img src="../build/assets/images/icon.svg" alt="Mooli Logo"
                                     class="img-fluid logo"></a>
                             <button type="button" class="btn-toggle-offcanvas"><i
                                     class="fa fa-align-left"></i></button>
@@ -531,7 +531,7 @@
                                         <li>
                                             <a href="javascript:void(0);">
                                                 <div class="media">
-                                                    <img class="media-object " src="assets/images/xs/avatar4.jpg"
+                                                    <img class="media-object " src="../build/assets/images/xs/avatar4.jpg"
                                                         alt="">
                                                     <div class="media-body">
                                                         <span class="name">Dr. James Wert <small
@@ -580,11 +580,10 @@
             <!-- Main left sidebar menu -->
             
             <div id="left-sidebar" class="sidebar light_active">
-                <a href="#" class="menu_toggle"><i class="fa fa-angle-left"></i></a>
+                <a href="#" class="menu_toggle" id="arrowSidebar"><i class="fa fa-angle-left"></i></a>
                 <div class="navbar-brand">
                     {{-- <a href="/"><img src="assets/images/icon.svg" alt="Mooli Logo" class="img-fluid logo"><span>Mooli-Hospital</span></a> --}}
-                    <a href="/" class="img-fluid logo"><span style="color:red;">med</span> <span
-                            style="color:#e41274;">Hospital</span></a>
+                    <a href="/" class="img-fluid logo"><span style="color: #82b440;">medHospital</span></a>
                     <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i
                             class="fa fa-close"></i></button>
                 </div>
@@ -592,8 +591,13 @@
                     <div class="user-account">
                         @if (Auth::check())
                             <div class="user_div">
+                                @if(Auth::check() && Auth::user()->avatar)
+                                <img src="/storage/images/{{ Auth::user()->avatar }}" class="user-photo"
+                                    alt="User Profile Picture" width="40" height="40">
+                                @else
                                 <img src="../build/assets/images/user.png" class="user-photo"
                                     alt="User Profile Picture">
+                                @endif
                             </div>
 
                             <div class="dropdown">
@@ -641,13 +645,12 @@
                                         class="fa fa-user-md"></i><span>Doctori</span></a>
                                 <ul>
                                     <li class="active"><a href="medici">Toti doctorii</a></li>
-
                                 </ul>
                             </li>
                             {{-- <li><a href="app-calendar.html"><i class="fa fa-calendar"></i> <span>Appointment</span></a></li> --}}
                             @if (Auth::check() && Auth::user()->role_id != 1)
-                                <li><i class="fa fa-calendar"></i><a class="dropdown-item"
-                                        href="{{ route('programari') }}">Programari</a>
+                                <li><a class=""
+                                        href="{{ route('programari') }}"><i class="fa fa-calendar"></i><span>Programari</span></a>
                             @endif
                             </li>
                             <li>
@@ -679,7 +682,7 @@
 <script src="/build/assets/bundles/vendorscripts.bundle.js"></script>
 
 <!-- Vedor js file and create bundle with grunt  --> 
-<script src="/build/assets/vendor/dropify/js/dropify.min.js"></script>
+<script src="../build/assets/vendor/dropify/js/dropify.min.js"></script>
 <script src="/build/assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script><!-- bootstrap datepicker Plugin Js --> 
 
 <!-- Project core js file minify with grunt --> 
@@ -687,7 +690,8 @@
 <script src="../js/pages/forms/dropify.js"></script>
 
 <script src="assets/bundles/libscripts.bundle.js"></script>    
-<script src="assets/bundles/vendorscripts.bundle.js"></script>
+<script src="../build/assets/bundles/vendorscripts.bundle.js"></script>
+
 </body>
 
 </html>

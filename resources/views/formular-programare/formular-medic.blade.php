@@ -37,7 +37,7 @@
     
     <div class="mb-3">
         <div class="container mt-5" style="max-width: 450px">
-            <h2 class="mb-4">Laravel Bootstrap Datepicker Demo</h2>
+            <h2 class="mb-4">Data</h2>
             <div class="form-group">
                 <div class='input-group date' id='datetimepicker'>
                 <input type='text' class="form-control" name="data"/>
