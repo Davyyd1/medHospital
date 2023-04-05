@@ -173,8 +173,8 @@
     </section>
 
 
-@endsection
 
+@push('js')
 <script>
     function save_form() {
         var data = new FormData($('#call-back-form')[0]);
@@ -203,3 +203,5 @@
         })
     }
 </script>
+@endpush
+@endsection

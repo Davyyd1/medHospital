@@ -35,18 +35,20 @@
         <input type="text" class='form-control' name='telefon' placeholder="Telefon*" value="{{ $doctor->telefon }}">
     </div>
     
-    <div class="mb-3">
-        <div class="container mt-5" style="max-width: 450px">
-            <h2 class="mb-4">Data</h2>
-            <div class="form-group">
-                <div class='input-group date' id='datetimepicker'>
-                <input type='text' class="form-control" name="data"/>
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-                </div>
-            </div>
-       </div>
-    </div>
+    <div class="container">
+        <div class="row">
+           <div class='col-sm-6'>
+              <div class="form-group">
+                 <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                 </div>
+              </div>
+           </div>
+           
+        </div>
+     </div>
     <button type='button' class='btn btn-primary' style="float: right;" onclick="save_form()">Programeaza-te</button>
 </form>

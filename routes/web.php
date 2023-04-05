@@ -57,6 +57,9 @@ Route::get('/programari', [App\Http\Controllers\NotificariController::class, 'pr
 // ---------------------------------------- Notificari medic ( programari )  ---------------------------------------------------- {}
 // Route::get('/programari-medic', [App\Http\Controllers\NotificariController::class, 'programari_medic'])->name('programari-medic');
 
+Route::get('/pagina', [App\Http\Controllers\PaginaController::class, 'show'])->name('show');
+Route::get('/paginaJQ', [App\Http\Controllers\PaginaController::class, 'showJQ'])->name('showJQ');
+
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
