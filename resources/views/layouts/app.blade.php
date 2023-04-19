@@ -15,7 +15,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
+
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -591,6 +595,7 @@
 
     @yield('content')
 
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script src="../build/assets/vendor/dropify/js/dropify.min.js"></script>
 
     <script src="../build/assets/bundles/libscripts.bundle.js"></script>
@@ -601,10 +606,13 @@
         flatpickr("#datetimepicker2", {
             enableTime: true,
             dateFormat: "Y-m-d H:i",
+            minuteIncrement: 30
         });
-    </script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
-
+        flatpickr._input.setAttribute('disabled', 'disabled')
+        // flatpickr._input.removeAttribute('disabled')
+        </script>
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+        
     @stack('js')
 
 </body>
