@@ -27,8 +27,11 @@
                         <div class="col-lg-4 col-md-12">
                             <div class="card profile-header">
                                 <div class="body text-center">
-                                    <img src="/storage/images/{{ get_medic_img($doctor->user_id) }}" class="rounded-circle"
-                                        alt="imagine" width="150" height="150">
+                                    @if(get_medic_img($doctor->user_id))
+                                    <img class="rounded-circle" src="../storage/images/{{ get_medic_img($doctor->user_id) }}" alt="" width="200" height="200">
+                                    @else
+                                    <img class="rounded-circle" src="/build/assets/images/user.png" width="150" height="150" alt="Mooli">
+                                    @endif
                                     <div class="mt-3">
                                         <h5 class="mb-0"><strong>{{ $doctor->nume_medic }}
                                                 {{ $doctor->prenume_medic }}</strong></h5>
@@ -107,38 +110,38 @@
                                             <div class="row clearfix">
                                                 <div class="col-lg-12 col-md-12">
                                                     @if ($doctor)
-                                                        <form action="" id="call-back-form" class="call-back-form"
+                                                        <form action="" id="call-back-form" class="call-back-form row"
                                                             name="call-back-form" enctype="multipart/form-data" method="POST">
                                                             @csrf
                                                             @method('PUT')
                                                             @if ($doctor->id == Auth::check() && Auth::user()->id)
                                                                 <div class="mb-3">
                                                                     <label class="form-label">Poza medic</label>
-                                                                    <input type='file' class="form-control" name="image" />
+                                                                    <input type='file'  name="image" class="form-control"/>
                                                                 </div>
                                                             @else
                                                             @endif
-                                                            <div class="mb-3">
+                                                            <div class="mb-3 col-sm-12 col-md-6">
                                                                 <label class="form-label">Nume</label>
                                                                 <input type="text" class='form-control' name='nume'
                                                                     placeholder="Nume*" value="{{ $doctor->nume_medic }}">
                                                             </div>
-                                                            <div class="mb-3">
+                                                            <div class="mb-3 col-sm-12 col-md-6">
                                                                 <label class="form-label">Prenume</label>
                                                                 <input type="text" class='form-control' name='prenume'
                                                                     placeholder="Prenume*"
                                                                     value="{{ $doctor->prenume_medic }}">
                                                             </div>
-                                                            <div class="mb-3">
+                                                            <div class="mb-3 col-sm-12 col-md-6">
                                                                 <label class="form-label">Specialitate</label>
                                                                 <input type="text" class='form-control'
                                                                     name='specialitate' placeholder="Specialitate*"
                                                                     value={{ $doctor->specialitate_medic }}>
                                                             </div>
-                                                            <div class="mb-3">
+                                                            <div class="mb-3 col-sm-12 col-md-6">
                                                                 <label class="form-label">Studii</label>
-                                                                <input type="text" class='form-control' name='studii'
-                                                                    placeholder="Studii*" value={{ $doctor->studii }}>
+                                                                <textarea type="text" class='form-control' name='studii'
+                                                                    placeholder="Studii*" >{{ $doctor->studii }}</textarea>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label class="form-label">Program</label>

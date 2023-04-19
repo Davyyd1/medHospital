@@ -6,7 +6,7 @@
     <div class="auth-main">
         <div class="auth_div vivify fadeIn">
             <div class="auth_brand">
-                <a class="navbar-brand" href="#"><img src="build/assets/images/icon.svg" width="50" class="d-inline-block align-top mr-2" alt="">Mooli</a>                                                
+                <a class="navbar-brand" href="#"><img src="build/assets/images/icon.svg" width="50" class="d-inline-block align-top mr-2" alt="">medHospital</a>                                                
             </div>
             <div class="card">
                 <div class="header">
@@ -44,17 +44,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-md-8 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember" style="font-size:13px;">
-                                        {{ __('Tine minte datele de conectare') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                        
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
@@ -62,11 +52,6 @@
                                     {{ __('Login') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Ai uitat parola?') }}
-                                    </a>
-                                @endif
                                 {{-- <span class="helper-text m-b-10"><i class="fa fa-lock"></i> <a href="page-forgot-password.html">Forgot password?</a></span> --}}
                                 <span>Nu ai un cont? <br> <a href="{{ route('register') }}">Inregistreaza-te!</a></span>
                             </div>

@@ -9,6 +9,7 @@ use App\UserInfo;
 use App\UsersMedicInfo;
 use Illuminate\Http\Request;
 use Auth;
+// use finfo;
 use Validator;
 
 class MediciController extends Controller
@@ -83,7 +84,7 @@ class MediciController extends Controller
 
         $userAvatarUpdate = User::where('id', Auth::user()->id)->first();
         if($request->hasFile('image')){
-            $destination_folder = 'public/images/';
+            $destination_folder = 'public/images';
             $image = $request->file('image');
             $image_name = time().rand().'.jpg';
             $path = $request->file('image')->storeAs($destination_folder, $image_name);
