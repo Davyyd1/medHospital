@@ -1,4 +1,4 @@
-.wrapper-story{
+/* .wrapper-story{
     display: flex;
     margin-top: 3rem;
     margin-bottom: 3rem;
@@ -17,11 +17,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 
 
-.story-footer-1{
+/* .story-footer-1{
     width: 50%;
 }
 .story-footer-2{
@@ -31,4 +31,53 @@
 .story-footer-3{
     width: 10%;
     padding-left: 1.5rem;
+} */
+
+
+.story {
+    margin-top: 2rem;
+    width: 100%;
+    /* border: 2px solid green; */
 }
+
+.info-hospital {
+    /* border: 2px solid red; */
+    padding: 1rem 3rem;
+    background-color: black;
+    color: white;
+    border-radius: 1.5rem;
+}
+
+/* div#wrapper {
+    height: 100px;
+    display: block;
+    position: relative;
+    top: 0;
+    z-index: 1;
+    opacity: 1;
+    visibility: visible!important;
+} */
+
+
+@media screen and (max-width:768px) {
+    .login.d-none {
+        display: block !important;
+    }
+
+    #main-content {
+        margin-top: 1rem!important;
+    }
+
+    #search-div{
+        margin-top:3.5rem;
+    }
+
+    #tabel-programari{
+        margin-top:5rem;
+    }
+
+}
+
+/* .login{
+    height:100%;
+} */

@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\View;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+// Route::get('/foo', function () {
+//     Artisan::call('storage:link');
+// });
 Route::get('/', [App\Http\Controllers\WelcomeController::class, 'show_welcome']);
 
 Auth::routes();
@@ -51,8 +54,13 @@ Route::put('/profil-pacient', [App\Http\Controllers\PacientiController::class, '
 Route::get('/programare/{id}', [App\Http\Controllers\ProgramareController::class, 'programare'])->middleware(programare::class);
 Route::post('/programare_submit', [App\Http\Controllers\ProgramareController::class, 'programare_submit'])->middleware(programare::class);
 
+// ---------------------------------------- Anulare prorgamari  ---------------------------------------------------- {}
+Route::put('/cancel-appointment', [App\Http\Controllers\ProgramareController::class, 'cancel_appointment'])->name('cancel-appointment');
+
+
 // ---------------------------------------- Notificari pacient ( programari )  ---------------------------------------------------- {}
 Route::get('/programari', [App\Http\Controllers\NotificariController::class, 'programari'])->name('programari');
+
 
 // ---------------------------------------- Notificari medic ( programari )  ---------------------------------------------------- {}
 // Route::get('/programari-medic', [App\Http\Controllers\NotificariController::class, 'programari_medic'])->name('programari-medic');

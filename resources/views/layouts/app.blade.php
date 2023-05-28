@@ -4,20 +4,20 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Laravel</title>
 
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <!-- this should go after your </body> -->
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.css" integrity="sha512-bYPO5jmStZ9WI2602V2zaivdAnbAhtfzmxnEGh9RwtlI00I9s8ulGe4oBa5XxiC6tCITJH/QG70jswBhbLkxPw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
-    
+
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="/build/assets/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/build/assets/vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/build/assets/vendor/animate-css/vivify.min.css">
-
+    
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="/build/assets/css/mooli.min.css">
     <style>
@@ -414,22 +414,10 @@
 <body>
     <div id="body" class="theme-green">
         <!-- Page Loader -->
-        <div class="page-loader-wrapper">
-            <div class="loader">
-                <div class="mt-3">
-                    @if (Auth::check() && Auth::user()->role_id==3)
-                        <img src="/storage/images/{{ Auth::user()->avatar }}" width="40" height="40" alt="Mooli">
-                    @else
-                        <img src="../build/assets/images/user.png" width="40" height="40" alt="Mooli">
-                    @endif
-                </div>
-                <p>Please wait...</p>
-            </div>
-        </div>
 
         <!-- Theme Setting -->
         <div class="themesetting">
-            <a href="javascript:void(0);" class="theme_btn"><i class="fa fa-gear fa-spin"></i></a>
+            <a href="#" class="theme_btn"><i class="fa fa-gear fa-spin"></i></a>
             <ul class="list-group">
                 <li class="list-group-item">
                     <ul class="choose-skin list-unstyled mb-0">
@@ -498,71 +486,30 @@
         <div class="overlay"></div>
 
         <div id="wrapper">
-
-            <!-- Page top navbar -->
             <nav class="navbar navbar-fixed-top @if (!Auth::check()) d-none @endif">
                 <div class="container-fluid">
                     <div class="navbar-left">
                         <div class="navbar-btn">
-                            <a href="index.html"><img src="../build/assets/images/icon.svg" alt="Mooli Logo" class="img-fluid logo"></a>
+                            <a href="/"><img src="../build/assets/images/icon.svg" alt="Mooli Logo" class="img-fluid logo"></a>
                             <button type="button" class="btn-toggle-offcanvas"><i class="fa fa-align-left"></i></button>
                         </div>
                     </div>
-                    {{-- @if (Auth::check()) --}}
                     <div class="navbar-right">
                         <div id="navbar-menu" class="@if (!Auth::check()) d-none @endif">
                             <ul class="nav navbar-nav">
-                                <li class="dropdown hidden-xs">
-                                    <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-                                        <i class="fa fa-envelope-o"></i>
-                                        <span class="notification-dot msg">4</span>
+                                <li class="hidden-xs"><a href="#" id="btnFullscreen" class="icon-menu"><i class="fa fa-arrows-alt"></i></a></li>
+                                <li>
+                                    <a class="icon-menu" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fa fa-power-off"></i>
                                     </a>
-                                    <ul class="dropdown-menu right_chat email mt-0 animation-li-delay">
-                                        <li class="header theme-bg gradient mt-0 text-light">You have 4 New eMail</li>
-                                        <li>
-                                            <a href="javascript:void(0);">
-                                                <div class="media">
-                                                    <img class="media-object " src="../build/assets/images/xs/avatar4.jpg" alt="">
-                                                    <div class="media-body">
-                                                        <span class="name">Dr. James Wert <small class="float-right font-12">Just
-                                                                now</small></span>
-                                                        <span class="message">Update GitHub</span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="javascript:void(0);" class="dropdown-toggle icon-menu" data-toggle="dropdown">
-                                        <i class="fa fa-bell-o"></i>
-                                        <span class="notification-dot info">4</span>
-                                    </a>
-                                    <ul class="dropdown-menu feeds_widget mt-0 animation-li-delay">
-                                        <li class="header theme-bg gradient mt-0 text-light">You have 4 New
-                                            Notifications</li>
-                                        <li>
-                                            <a href="#">
-                                                <div class="mr-4"><i class="fa fa-thumbs-o-up text-success"></i>
-                                                </div>
-                                                <div class="feeds-body">
-                                                    <h4 class="title text-success">2 New Feedback <small class="float-right text-muted font-12">9:22
-                                                            AM</small></h4>
-                                                    <small>It will give a smart finishing to your site</small>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
 
-                                {{-- <li><a href="javascript:void(0);" class="right_toggle icon-menu" title="Right Menu"><i class="fa fa-comments-o"></i></a></li> --}}
-                                <li class="hidden-xs"><a href="javascript:void(0);" id="btnFullscreen" class="icon-menu"><i class="fa fa-arrows-alt"></i></a></li>
-                                <li><a href="page-login.html" class="icon-menu"><i class="fa fa-power-off"></i></a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    {{-- @endif --}}
                 </div>
             </nav>
             <!-- Main left sidebar menu -->
@@ -570,15 +517,14 @@
             <div id="left-sidebar" class="sidebar light_active">
                 <a href="#" class="menu_toggle" id="arrowSidebar"><i class="fa fa-angle-left"></i></a>
                 <div class="navbar-brand">
-                    {{-- <a href="/"><img src="assets/images/icon.svg" alt="Mooli Logo" class="img-fluid logo"><span>Mooli-Hospital</span></a> --}}
-                    <a href="/" class="img-fluid logo"><span style="color: #82b440;">medHospital</span></a>
+                    <a href="/" class="img-fluid logo"><img src="../build/assets/images/icon.svg" alt="" width="50" height="45"><span style="color: #82b440;">medHospital</span></a>
                     <button type="button" class="btn-toggle-offcanvas btn btn-sm float-right"><i class="fa fa-close"></i></button>
                 </div>
                 <div class="sidebar-scroll">
                     <div class="user-account">
                         @if (Auth::check())
                             <div class="user_div">
-                                @if (Auth::check() && Auth::user()->role_id == 3)
+                                @if (Auth::check() && Auth::user()->role_id == 3 && Auth::user()->avatar != 'users/default.png')
                                     <img src="/storage/images/{{ Auth::user()->avatar }}" width="40" height="40" class="user-photo">
                                 @else
                                     <img src="../build/assets/images/user.png" class="user-photo" alt="User Profile Picture">
@@ -587,7 +533,7 @@
 
                             <div class="dropdown">
                                 <span>Buna,</span>
-                                <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>
+                                <a href="#" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>
                                         @if (Auth::check())
                                             {{ Auth::user()->name }}
                                         @endif
@@ -611,7 +557,7 @@
                                 </ul>
                             </div>
                         @else
-                            <a href="{{ route('login') }}">Inregistreaza-te</a>
+                            <a href="{{ route('login') }}">Login</a>
                         @endif
                     </div>
                     @if (Auth::check())
@@ -622,23 +568,15 @@
                                 <li class="active">
                                     <a href="#Doctors" class="has-arrow"><i class="fa fa-user-md"></i><span>Doctori</span></a>
                                     <ul>
-                                        <li class="active"><a href="medici">Toti doctorii</a></li>
+                                        <li class="active"><a href="../medici"><span>Toti doctorii</span></a></li>
                                     </ul>
                                 </li>
-                                {{-- <li><a href="app-calendar.html"><i class="fa fa-calendar"></i> <span>Appointment</span></a></li> --}}
+
                                 @if (Auth::check() && Auth::user()->role_id != 1)
-                                    <li><a class="" href="{{ route('programari') }}"><i class="fa fa-calendar"></i><span>Programari</span></a>
+                                    <li><a class="" href="{{ route('programari') }}"><i class="fa fa-calendar"></i><span>Programari</span></a></li>
                                 @endif
-                                </li>
-                                <li>
-                                    <a href="#Patients" class="has-arrow"><i class="fa fa-user-circle-o"></i><span>Pacienti</span></a>
-                                    <ul>
-                                        <li><a href="patients-all.html">Toti pacientii</a></li>
-                                        <li><a href="patients-add.html">Adauga pacient</a></li>
-                                        <li><a href="patients-profile.html">Profilul pacientului</a></li>
-                                        <li><a href="patients-invoice.html">Facturi pacient</a></li>
-                                    </ul>
-                                </li>
+                                
+                                
                                 @if (Auth::check() && Auth::user()->role_id == 1)
                                     <li class="header">Admin</li>
                                     <li><a href="{{ url('adauga-medic') }}">Adauga Doctori</a></li>
@@ -651,25 +589,32 @@
         </div>
     </div>
 
-    
     @yield('content')
-    
+
     <script src="../build/assets/vendor/dropify/js/dropify.min.js"></script>
-    
-    <script src="../build/assets/bundles/libscripts.bundle.js"></script>    
+
+    <script src="../build/assets/bundles/libscripts.bundle.js"></script>
     <script src="../build/assets/bundles/vendorscripts.bundle.js"></script>
 
     <script src="../build/assets/bundles/mainscripts.bundle.js"></script>
     <script>
+        function rmydays(date) {
+        return (date.getDay() === 0 || date.getDay() === 6);
+        }
+
         flatpickr("#datetimepicker2", {
             enableTime: true,
             dateFormat: "Y-m-d H:i",
+            minDate: "today",
+            disable: [rmydays],
+            minTime: "09:00",
+            maxTime: "13:00",
         });
-        </script>
-        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
-        
+    </script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
+
     @stack('js')
-    
+
 </body>
 
 </html>

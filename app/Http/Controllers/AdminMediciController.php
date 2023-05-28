@@ -66,9 +66,12 @@ class AdminMediciController extends Controller
         return [
             'nume'=>'required',
             'prenume'=>'required',
+            'email' => 'required|email',
+            'parola' => 'required',
             'specialitate'=>'required',
             'studii'=>'required',
-            'program'=>'required'
+            'program'=>'required',
+            'descriere' => 'required'
         ];
     }
 

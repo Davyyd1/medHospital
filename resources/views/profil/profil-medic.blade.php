@@ -26,8 +26,13 @@
                     <div class="col-lg-4 col-md-12">
                         <div class="card profile-header">
                             <div class="body text-center">
-                                <img src="/storage/images/{{ get_medic_img($doctor->user_id) }}" class="rounded-circle"
-                                    alt="imagine" width="150" height="150">
+                                @if(get_medic_img($doctor->user_id))
+                                <img class="rounded-circle" src="../storage/images/{{ get_medic_img($doctor->user_id) }}" alt="" width="200" height="200">
+                                @else
+                                <img class="rounded-circle" src="../build/assets/images/user.png" width="150" height="150" alt="Mooli">
+                                @endif
+                                {{-- <img src="/storage/images/{{ get_medic_img($doctor->user_id) }}" class="rounded-circle"
+                                    alt="imagine" width="150" height="150"> --}}
                                 <div class="mt-3">
                                     <h5 class="mb-0"><strong>{{ $doctor->nume_medic }}
                                             {{ $doctor->prenume_medic }}</strong></h5>
