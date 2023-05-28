@@ -603,13 +603,20 @@
         }
 
         flatpickr("#datetimepicker2", {
-            enableTime: true,
-            dateFormat: "Y-m-d H:i",
+            // enableTime: true,
+            dateFormat: "d-m-Y",
             minDate: "today",
-            disable: [rmydays],
-            minTime: "09:00",
-            maxTime: "13:00",
+            disable: [rmydays]
         });
+
+        flatpickr("#datetimepicker3", {
+            enableTime: true,
+            noCalendar: true,
+            dateFormat: "H:i",
+            minTime: "09:00",
+            maxTime: "18:00",
+        });
+
     </script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha512-AIOTidJAcHBH2G/oZv9viEGXRqDNmfdPVPYOYKGy3fti0xIplnlgMHUGfuNRzC6FkzIo0iIxgFnr9RikFxK+sw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
 

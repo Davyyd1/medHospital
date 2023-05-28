@@ -38,9 +38,20 @@
 
     <div class="mb-3">
         <div class="form-group">
-            <h4 class="mb-4">Data</h4>
+            <p>Data</p>
             <div class='input-group date' id='datetimepicker1'>
                 <input type='text' class="form-control" id='datetimepicker2' name="data" />
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <div class="form-group">
+            <p>Ora</p>
+            <div class='input-group date' id='datetimepicker1'>
+                <input type='text' class="form-control" id='datetimepicker3' name="ora" />
                 <span class="input-group-addon">
                     <span class="glyphicon glyphicon-calendar"></span>
                 </span>

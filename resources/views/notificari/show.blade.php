@@ -42,7 +42,7 @@
                                           </div>
                                        </td>
                                        <td>
-                                          <div>{{ $notificari->data }}</div>
+                                          <div>{{ $notificari->data }} {{ $notificari->ora }}</div>
 
                                        </td>
                                        <td>{{ $notificari->nume_medic }} {{ $notificari->prenume_medic }}</td>
@@ -74,7 +74,7 @@
                                           </td>
                                           <td>{{ $programariMedic->email }}</td>
                                           <td>
-                                             <div>{{ $programariMedic->data }}</div>
+                                             <div>{{ $programariMedic->data }} {{ $programariMedic->ora }}</div>
                                           </td>
                                           <td>{{ $programariMedic->nume_medic }}
                                              {{ $programariMedic->prenume_medic }}</td>

@@ -27,13 +27,14 @@ class ProgramareController extends Controller
 
       $pacient = UserInfo::where('user_id', Auth::user()->id)->first();
       $medic = UsersMedicInfo::where('user_id', Auth::user()->id)->first();
-
+      $ora = Programari::where('ora', $request->data1)->first();
+      // dd($ora);
       $validator = Validator::make($request->input(), $this->validate_input());
-      if ($pacient || $medic) {
+      if ($pacient || $medic && !$ora) {
          if ($validator->fails()) {
             return response([
                'status' => 0,
-               'mesaj' => '<div class="alert alert-danger" role="alert">
+               'mesaj' => '<div class="alert alert-danger" role="alert"> 
                     ' . $validator->errors()->first() . '
                   </div>'
             ]);
@@ -47,6 +48,7 @@ class ProgramareController extends Controller
          //    $programare->cod_pacient = $pacient->cod_pacient;
          // }
          $programare->data = $request->data;
+         $programare->ora = $request->ora;
          $programare->status = 1;
          $programare->save();
 
@@ -59,7 +61,7 @@ class ProgramareController extends Controller
       return response([
          'status' => 0,
          'mesaj' => '<div class="alert alert-danger" role="alert">
-            ' . $validator->errors()->first() . '
+            ' . $validator->errors()->first() . '  
           </div>'
       ]);
    }
@@ -68,7 +70,8 @@ class ProgramareController extends Controller
    {
       return [
 
-         'data' => 'required|unique:appointments'
+         'data' => 'required|:appointments',
+         'ora' => 'required|unique:appointments'
       ];
    }
 
